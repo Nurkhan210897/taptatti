@@ -27,8 +27,16 @@
             <input type="text" placeholder="Сауле" class="input-num" />
           </div>
           <div class="col-xl-4">
-            <label for>Имя друга *</label>
-            <input type="text" placeholder="Сауле" class="input-num" />
+            <label for>Телефон друга *</label>
+            <div class="input-num">
+                  <img src="@/assets/images/flag.png" alt />
+                  <input
+                    type="tel"
+                    v-mask="'+#(###) ###-##-##'"
+                    placeholder="+7 (___) ___ __ __"
+                    class="input-text"
+                  />
+                </div>
           </div>
         </div>
       </form>
