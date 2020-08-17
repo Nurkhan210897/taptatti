@@ -1,0 +1,55 @@
+@font-face {
+    font-family: rounded-regular;
+    src: url("./assets/fonts/Rounded_Regular.otf");
+}
+
+@font-face {
+    font-family: Rounded_SemiBold;
+    src: url("./assets/fonts/Rounded_SemiBold.otf");
+}
+
+@font-face {
+    font-family: rounded-bold;
+    src: url("./assets/fonts/rounded-bold.otf");
+}
+
+@font-face {
+    font-family: appetite-medium;
+    src: url("./assets/fonts/AppetiteProMedium.otf");
+}
+
+p {
+    font-family: rounded-regular;
+    color: #5D2524;
+}
+
+.title-page {
+    font-family: appetite-medium;
+    color: #5D2524;
+}
+
+.title {
+    font-size: 25px;
+    color: #5D2524;
+    p {
+        font-family: rounded-bold;
+    }
+}
+
+$brown-text: #5D2524;
+$brown-bg: #5D2524;
+$blue-bg: #4ABBC1;
+$blue-text: #4ABBC1;
+$yellow-bg: #FFF2D3;
+.red-text {
+    color: #FF2E47;
+    font-family: rounded-bold;
+}
+
+.blue-text {
+    color: #4ABBC1;
+}
+
+.green-text {
+    color: #5BBD76;
+}
