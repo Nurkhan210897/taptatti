@@ -6,13 +6,13 @@
     <div class="pickup-content">
       <div class="pickup-info">
         <div class="title">
-          <p>Выберите магазин из списка</p>
-          <img
+          <p>Выберите магазин из списка   <img
             src="@/assets/images/info.png"
             alt
             @mouseenter="show=!false"
             @mouseleave="show = false"
-          />
+          /></p>
+        
           <div v-if="show">
             <div class="tooltip-product">
               <p>Vivamus vel lectus sit porta mus a faucibus. Volutpat sem arcu.</p>

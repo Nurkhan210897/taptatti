@@ -26,7 +26,7 @@
             @minusPrice="minusPrice"
           />
         </div>
-        <div class="contact-info mt-4">
+        <div class="contact-info mt-4 padding-block">
           <div class="title">
             <p>Контактная информация</p>
           </div>
@@ -84,7 +84,7 @@
             </button>
           </form>
         </div>
-        <div class="delivery-pickup mt-4">
+        <div class="delivery-pickup mt-4 padding-block">
           <div class="tabs-btn">
             <a
               href="#"
@@ -101,7 +101,7 @@
             <component :is="component"></component>
           </keep-alive>
         </div>
-        <div class="last-delivery mt-4">
+        <div class="last-delivery mt-4 padding-block">
           <div class="tabs-btn">
             <a
               href="#"

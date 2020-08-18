@@ -29,22 +29,25 @@
           <div class="col-xl-4">
             <label for>Телефон друга *</label>
             <div class="input-num">
-                  <img src="@/assets/images/flag.png" alt />
-                  <input
-                    type="tel"
-                    v-mask="'+#(###) ###-##-##'"
-                    placeholder="+7 (___) ___ __ __"
-                    class="input-text"
-                  />
-                </div>
+              <img src="@/assets/images/flag.png" alt />
+              <input
+                type="tel"
+                v-mask="'+#(###) ###-##-##'"
+                placeholder="+7 (___) ___ __ __"
+                class="input-text"
+              />
+            </div>
           </div>
         </div>
       </form>
     </div>
     <div class="time-delivery">
       <div class="title">
-        <p>Время доставки</p>
-        <img src="@/assets/images/info.png" @mouseenter="show=!false" @mouseleave="show = false" />
+        <p>
+          Время доставки
+          <img src="@/assets/images/info.png" @mouseenter="show=!false" @mouseleave="show = false" />
+        </p>
+
         <div v-if="show">
           <div class="tooltip-product">
             <p>Vivamus vel lectus sit porta mus a faucibus. Volutpat sem arcu.</p>

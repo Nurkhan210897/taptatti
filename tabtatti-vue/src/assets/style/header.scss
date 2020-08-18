@@ -1,0 +1,128 @@
+body {
+    background-color: #EEFDFF;
+}
+
+.container {
+    padding: 0;
+}
+
+.vs__search {
+    padding: 0 !important;
+}
+
+.vs__dropdown-toggle {
+    border: none;
+}
+
+.vs__open-indicator {
+    fill: #5D2524;
+    transform: scale(.8);
+}
+
+.vs__selected {
+    font-weight: 600;
+    font-family: rounded-regular;
+    color: #5D2524;
+}
+
+.city-select {
+    display: flex;
+    align-items: center;
+    .v-select {
+        width: 124px;
+    }
+}
+
+.lang-select {
+    .v-select {
+        width: 70px;
+    }
+}
+
+.header {
+    background-image: url("./assets/images/bg-head.png");
+    background-size: 100% 100%;
+    .logo {
+        position: relative;
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 230px;
+        }
+    }
+    .nav {
+        display: flex;
+        justify-content: space-between;
+        padding: 22px 0;
+        align-items: center;
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            list-style-type: none;
+            i {
+                color: #5D2524;
+            }
+        }
+        .nav-links {
+            padding: 0;
+            display: flex;
+            li {
+                list-style-type: none;
+                margin-right: 40px;
+                &:last-child {
+                    margin-right: 0 !important;
+                }
+                a {
+                    font-weight: 600;
+                    font-size: 19px;
+                    color: #5D2524;
+                    font-family: rounded-regular;
+                }
+            }
+        }
+    }
+    .header-right {
+        ul {
+            &:first-child {
+                display: flex;
+                align-items: center;
+            }
+        }
+    }
+    .bonus-user {
+        height: 45px;
+        background-color: #FCF18C;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        color: #5D2524;
+        font-family: rounded-regular;
+        padding: 13px 14px;
+        img {
+            margin-right: 11px;
+        }
+        b {
+            font-size: 22px;
+            line-height: 0;
+        }
+        p {
+            margin-bottom: 0;
+            font-size: 11px;
+            line-height: 10px;
+        }
+    }
+    .basket-head {
+        width: 50px;
+        height: 45px;
+        background-color: #5D2524;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        margin-left: 8px;
+        a {}
+    }
+}

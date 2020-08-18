@@ -2,8 +2,8 @@
   <div class="product-delivery">
     <div class="time-delivery">
       <div class="title">
-        <p>Время доставки</p>
-        <img src="@/assets/images/info.png" @mouseenter="show=!false" @mouseleave="show = false" />
+        <p>Время доставки  <img src="@/assets/images/info.png" @mouseenter="show=!false" @mouseleave="show = false" /></p>
+       
         <div v-if="show">
           <div class="tooltip-product">
             <p>Vivamus vel lectus sit porta mus a faucibus. Volutpat sem arcu.</p>

@@ -8,30 +8,33 @@
             <div class="clock">
               <img src="@/assets/images/clock.png" alt />
             </div>
-            <div class="tooltip-product" >
+            <div class="tooltip-product">
               <p>Доставка может затянуться до 2 часов.</p>
             </div>
           </div>
         </div>
         <div class="product-text">
-          <p>{{ item.title }}</p>
-          <p>{{ item.deskr }}</p>
+          <div class="product-deskr">
+            <p>{{ item.title }}</p>
+            <p>{{ item.deskr }}</p>
+          </div>
+
+          <div class="product-count-price">
+            <div class="count">
+              <span @click="counterMinus">
+                <i class="fas fa-minus"></i>
+              </span>
+              <p>{{ item.count }}</p>
+              <span @click="counterPlus">
+                <i class="fas fa-plus"></i>
+              </span>
+            </div>
+            <p>{{ totalPrice }}₸</p>
+            <span class="delete-product" @click="deleteProduct">
+              <i class="fas fa-times"></i>
+            </span>
+          </div>
         </div>
-      </div>
-      <div class="product-count-price">
-        <div class="count">
-          <span @click="counterMinus">
-            <i class="fas fa-minus"></i>
-          </span>
-          <p>{{ item.count }}</p>
-          <span @click="counterPlus">
-            <i class="fas fa-plus"></i>
-          </span>
-        </div>
-        <p>{{ totalPrice }}₸</p>
-        <span class="delete-product" @click="deleteProduct">
-          <i class="fas fa-times"></i>
-        </span>
       </div>
     </div>
   </div>
@@ -53,16 +56,16 @@ export default {
   methods: {
     counterPlus() {
       this.item.count++;
-      this.$emit('addPrice',this.item.price);
+      this.$emit("addPrice", this.item.price);
     },
     counterMinus() {
       if (this.item.count != 1) {
         this.item.count--;
-        this.$emit('minusPrice',this.item.price);
+        this.$emit("minusPrice", this.item.price);
       }
     },
-    deleteProduct(){
-        this.$emit('deleteProduct')
+    deleteProduct() {
+      this.$emit("deleteProduct");
     }
   }
 };
