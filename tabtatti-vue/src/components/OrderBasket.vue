@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="row">
-      <div class="col-xl-8">
+      <div class="col-xl-9">
         <div class="title-basket">
           <h1 class="title-page">Корзина</h1>
           <div class="add-product">
@@ -119,7 +119,7 @@
           </keep-alive>
         </div>
       </div>
-      <div class="col-xl-4">
+      <div class="col-xl-3">
         <div class="order">
           <div class="order-header">
             <img src="@/assets/images/order.png" alt />
@@ -128,7 +128,7 @@
           <div class="order-content">
             <ul>
               <li>
-                <p>Кол-во:</p>
+                <p>Кол-во товаров</p>
                 <b>{{ totalCount }}</b>
               </li>
               <li>
@@ -207,7 +207,7 @@
           <div class="order-content">
             <ul>
               <li>
-                <p>Кол-во:</p>
+                <p>Кол-во товаров</p>
                 <b>{{ product.length }}</b>
               </li>
               <li>
