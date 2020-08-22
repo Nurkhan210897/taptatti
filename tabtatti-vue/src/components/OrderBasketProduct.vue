@@ -4,11 +4,11 @@
       <div class="product-img-deskr">
         <div class="product-img">
           <img :src="item.img" alt />
-          <div v-if="show">
-            <div class="clock">
-              <img src="@/assets/images/clock.png" alt />
+          <div >
+            <div class="clock" v-if="item.stock">
+              <img :src="item.stock" alt />
             </div>
-            <div class="tooltip-product">
+            <div class="tooltip-product" v-if="show">
               <p>Доставка может затянуться до 2 часов.</p>
             </div>
           </div>

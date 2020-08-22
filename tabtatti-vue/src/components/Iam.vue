@@ -2,8 +2,15 @@
   <div class="product-delivery">
     <div class="time-delivery">
       <div class="title">
-        <p>Время доставки  <img src="@/assets/images/info.png" @mouseenter="show=!false" @mouseleave="show = false" /></p>
-       
+        <p>
+          Время доставки
+          <img
+            src="@/assets/images/info.png"
+            @mouseenter="show=!false"
+            @mouseleave="show = false"
+          />
+        </p>
+
         <div v-if="show">
           <div class="tooltip-product">
             <p>Vivamus vel lectus sit porta mus a faucibus. Volutpat sem arcu.</p>
@@ -17,9 +24,6 @@
             <label for>Как можно скорее</label>
           </div>
           <br />
-          <div v-show="timeDelivery.date">
-            <v-select :options="optionsDate" :clearable="false" label="options"></v-select>
-          </div>
         </div>
         <div class="col-xl-4">
           <div class="d-flex align-items-center">
@@ -27,14 +31,19 @@
             <label for>Выбрать время</label>
           </div>
           <br />
-          <div v-show="timeDelivery.time">
-            <v-select
-              :options="optionsTime"
-              :reduce="options => options.code"
-              :clearable="false"
-              label="options"
-            ></v-select>
-          </div>
+        </div>
+      </div>
+      <div v-show="timeDelivery.time" class="row">
+        <div class="col-xl-4">
+          <v-select :options="optionsDate" :clearable="false" label="options"></v-select>
+        </div>
+        <div class="col-xl-4">
+          <v-select
+            :options="optionsTime"
+            :reduce="options => options.code"
+            :clearable="false"
+            label="options"
+          ></v-select>
         </div>
       </div>
     </div>

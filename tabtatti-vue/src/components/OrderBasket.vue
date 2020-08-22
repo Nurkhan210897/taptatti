@@ -26,7 +26,7 @@
             @minusPrice="minusPrice"
           />
         </div>
-        <div class="contact-info mt-4 padding-block">
+        <div class="contact-info padding-block">
           <div class="title">
             <p>Контактная информация</p>
           </div>
@@ -101,7 +101,7 @@
             <component :is="component"></component>
           </keep-alive>
         </div>
-        <div class="last-delivery mt-4 padding-block">
+        <div class="last-delivery padding-block">
           <div class="tabs-btn">
             <a
               href="#"
@@ -316,6 +316,7 @@ export default {
     product: [
       {
         img: require("@/assets/images/assorti1.png"),
+        stock: require("@/assets/images/clock.png"),
         title: "Фруктовый большой",
         deskr:
           "Ароматные, тонкие коржи на основе натурально...Ароматные, тонкие коржи на основе натурально...",
@@ -324,6 +325,7 @@ export default {
       },
       {
         img: require("@/assets/images/assorti2.png"),
+        stock: require("@/assets/images/no-product.png"),
         title: "Мясной пирог",
         deskr:
           "Круглый торт, состоит из 3 коржей шоколадного бисквита, между слоями бисквита равномерно нанесен...",

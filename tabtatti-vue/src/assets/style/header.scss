@@ -42,6 +42,8 @@ body {
 .header {
     background-image: url("./assets/images/bg-head.png");
     background-size: 100% 100%;
+    position: sticky;
+    top: 0;
     .logo {
         position: relative;
         img {
@@ -127,4 +129,111 @@ body {
         margin-left: 8px;
         a {}
     }
+}
+
+.burger {
+    display: none;
+    z-index: 99;
+}
+
+.nav-mobile {
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-200%);
+    transition: all .5s ease;
+    background-color: #fff;
+    padding: 20px;
+    .title-link {
+        display: flex;
+        align-items: center;
+        img {
+            margin-right: 10px;
+        }
+        a {
+            color: #5D2524;
+            font-size: 21px;
+            letter-spacing: 0.06em;
+            font-family: rounded-bold;
+        }
+    }
+    .nav-mobile-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0;
+    }
+    .nav {
+        flex-direction: column;
+        ul {
+            flex-direction: column;
+        }
+    }
+    .nav-links {
+        margin: 2rem 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        li {
+            margin-bottom: 25px;
+            a {
+                color: #5D2524;
+                font-size: 22px;
+                font-family: rounded-bold;
+            }
+        }
+    }
+    li {
+        list-style-type: none;
+    }
+    .btn-mobile-menu {
+        button {
+            width: 100%;
+            letter-spacing: 0.05em;
+            font-size: 16px;
+            padding: 9px 0;
+            align-items: center;
+            justify-content: center;
+            height: 60px;
+        }
+    }
+    .bonus-mobile {
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
+.mobile-cart {
+    display: none;
+    i {
+        font-size: 28px;
+        font-weight: bold;
+        color: #5D2524;
+        position: relative;
+        span {
+            color: #fff;
+            position: absolute;
+            right: -9px;
+            top: 3px;
+            font-style: initial;
+            font-size: 12px;
+            background-color: $blue-bg;
+            min-width: 20px;
+            min-height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}
+
+.activeMenu {
+    transform: translate(0);
+    transition: all .5s ease;
 }

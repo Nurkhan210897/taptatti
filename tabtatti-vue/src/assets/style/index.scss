@@ -195,7 +195,7 @@
         margin-top: 22px;
         h3 {
             margin: 0;
-            font-family: Rounded_SemiBold;
+            font-family: rounded-bold;
             font-size: 25px;
         }
         img {
@@ -340,13 +340,16 @@
     background-color: #fff;
     margin-top: 20px;
     form {
-        padding: 8px 6px;
+        padding: 12px 0px 8px;
     }
     .col-xl-4 {
-        padding: 0 10px;
         label {
             font-size: 13px;
         }
+    }
+    .btn-outline {
+        padding: 6px 12px;
+        letter-spacing: 0.05em;
     }
 }
 
@@ -393,7 +396,7 @@
             margin-bottom: 0;
         }
         img {
-            margin-left: 9px;
+            margin-left: 0px;
         }
     }
 }
@@ -508,7 +511,7 @@
     p {
         margin-bottom: 0;
         margin: 0 10px;
-        font-family: Rounded_SemiBold;
+        font-family: rounded-bold;
     }
     i {
         color: $brown-text;
@@ -519,6 +522,7 @@
     background-color: #fff;
     box-shadow: 0px 12px 11px -11px rgba(0, 138, 182, 0.12);
     border-radius: 10px;
+    margin-top: 20px;
     label {
         margin-left: 10px;
         margin-bottom: 0;
@@ -535,7 +539,7 @@
                 margin-bottom: 0;
             }
             img {
-                margin-left: 9px;
+                margin-left: 0;
             }
             .tooltip-product {
                 width: 155px;
@@ -550,7 +554,7 @@
             margin-top: 25px;
             label {
                 font-size: 16px;
-                font-family: Rounded_SemiBold;
+                font-family: rounded-bold;
             }
         }
     }
@@ -631,7 +635,7 @@
     border-radius: 8px;
     h5 {
         color: #5D2524;
-        font-family: Rounded_SemiBold;
+        font-family: rounded-bold;
         margin-bottom: 15px;
     }
     ul {
