@@ -7,8 +7,9 @@
     background-color: #fff;
     box-shadow: 0px 12px 11px -11px rgba(0, 138, 182, 0.12);
     border-radius: 10px;
+    padding-bottom: 20px;
     .product-count {
-        padding: 30px 30px 0;
+        padding: 36px 50px 0;
         p {
             color: #5D2524;
             margin-bottom: 0;
@@ -19,7 +20,7 @@
     .product {
         display: flex;
         justify-content: space-between;
-        padding: 30px;
+        padding: 27px 51px 26px 48px;
         border-bottom: 1px solid #F3F1ED;
         &:last-child {
             border-bottom: none !important;
@@ -30,11 +31,12 @@
         }
         .product-img-deskr {
             display: flex;
-            align-items: end;
+            align-items: center;
+            width: 100%;
             .product-img {
                 box-shadow: (0px 0px 7px rgba(180, 140, 104, 0.18));
                 padding: 10px 5px;
-                margin-right: 20px;
+                margin-right: 25px;
                 border-radius: 4px;
                 position: relative;
                 .tooltip-product {
@@ -82,8 +84,9 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
+                width: 100%;
                 .product-deskr {
-                    max-width: 50%;
+                    max-width: 35%;
                 }
                 p {
                     margin: 0;
@@ -101,7 +104,7 @@
             }
         }
         .product-count-price {
-            width: 40%;
+            width: 46%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -114,13 +117,13 @@
                 display: flex;
                 align-items: center;
                 p {
-                    margin: 0 10px;
+                    margin: 0 12px;
                     font-size: 14px;
                 }
                 span {
                     background-color: #FFF2D3;
                     border-radius: 4px 0px 0px 4px;
-                    padding: 4px 8px;
+                    padding: 6px 10px;
                     cursor: pointer;
                     transition: all .5s ease;
                     font-size: 12px;
@@ -149,11 +152,16 @@
     .add-product {
         border: 2px solid $brown-text;
         height: fit-content;
-        padding: 7px 13px;
+        padding: 6px 0px;
         border-radius: 8px;
+        max-width: 190px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
         cursor: pointer;
         p {
-            font-size: 13px;
+            font-size: 14px;
             font-family: rounded-bold;
             color: $brown-text;
             margin: 0;
@@ -181,12 +189,14 @@
         border-radius: 10px 10px 0px 0px;
         display: flex;
         align-items: center;
-        padding: 23px 30px;
+        padding: 19.5px 32px;
         color: #fff;
-        font-family: rounded-bold;
-        margin-top: 10px;
+        font-family: rounded-regular;
+        margin-top: 22px;
         h3 {
             margin: 0;
+            font-family: Rounded_SemiBold;
+            font-size: 25px;
         }
         img {
             margin-right: 1rem;
@@ -196,7 +206,7 @@
         border-radius: 0 0 20px 20px;
         ul {
             margin-bottom: 0;
-            padding: 30px;
+            padding: 30px 30px 15px 34px;
             border-bottom: 1px solid #cdcdcd;
             font-family: rounded-regular;
             &:last-child {
@@ -204,10 +214,11 @@
             }
             p {
                 color: $brown-text;
+                font-size: 12px;
             }
             .brown-btn {
                 background-color: $brown-bg;
-                padding: 13px 50px;
+                padding: 13px 50px 15px;
                 width: 100%;
                 color: #fff;
                 font-family: rounded-regular;
@@ -221,7 +232,7 @@
                 }
             }
             .info-order {
-                margin-top: 1rem;
+                margin-top: 8px;
             }
         }
         .clock {
@@ -238,15 +249,22 @@
             list-style-type: none;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 11px;
+            margin-bottom: 2.8px;
             p {
                 display: flex;
                 align-items: center;
                 margin-bottom: 0;
                 font-size: 13px;
+                letter-spacing: 0.035em;
                 span {
                     margin-left: 5px;
                 }
+            }
+            b {
+                color: #5D2524;
+                font-size: 16px;
+                line-height: 25px;
+                font-family: rounded-bold;
             }
             .red-text {
                 font-size: 13px;
@@ -254,6 +272,7 @@
             .bonus {
                 display: flex;
                 align-items: center;
+                font-size: 14px;
                 b {
                     background-color: #5D2524;
                     border-radius: 4px;
@@ -263,6 +282,8 @@
                     justify-content: center;
                     margin-right: 5px;
                     padding: 0 5px;
+                    font-size: 13px;
+                    line-height: 22px;
                 }
                 .info-bonus {
                     margin-left: 8px;
@@ -277,6 +298,27 @@
             }
             &:last-child {
                 margin-bottom: 0 !important;
+            }
+        }
+        .price-product {
+            padding-top: 10px;
+            li {
+                align-items: flex-end;
+            }
+            .total-pay {
+                text-align: right;
+                .small {
+                    font-size: 12px;
+                    text-decoration: line-through;
+                }
+                b {
+                    display: block;
+                    font-size: 25px;
+                    letter-spacing: 1px;
+                    span {
+                        font-size: 20px;
+                    }
+                }
             }
         }
     }
@@ -296,6 +338,10 @@
     box-shadow: 0px 12px 11px -11px rgba(0, 138, 182, 0.12);
     border-radius: 10px;
     background-color: #fff;
+    margin-top: 20px;
+    form {
+        padding: 8px 6px;
+    }
     .col-xl-4 {
         padding: 0 10px;
         label {
@@ -305,10 +351,10 @@
 }
 
 .delivery-pickup {
-    padding: 35px;
     background-color: #fff;
     box-shadow: 0px 12px 11px -11px rgba(0, 138, 182, 0.12);
     border-radius: 10px;
+    margin-top: 20px;
 }
 
 .pickup-regulations {
@@ -339,7 +385,7 @@
 }
 
 .pickup-content {
-    padding-top: 35px;
+    padding-top: 32px;
     .title {
         display: flex;
         align-items: center;
@@ -353,18 +399,19 @@
 }
 
 .pickup-shops {
-    padding-top: 36px;
+    padding-top: 33px;
     ul {
         display: flex;
         justify-content: space-evenly;
         width: 100%;
+        margin: 0 !important;
         padding: 0;
         li {
             list-style-type: none;
             font-size: 12px;
             p {
                 i {
-                    font-size: 8px;
+                    font-size: 6px;
                 }
             }
             &:nth-child(1) {
@@ -395,7 +442,7 @@
 .pickup-check {
     display: flex;
     align-items: end;
-    margin-bottom: 40px;
+    margin-bottom: 45px;
     .pickup-shops-info {
         margin-left: 15px;
         b {
@@ -419,7 +466,7 @@
     padding-bottom: .5rem;
     border-radius: 3px;
     a {
-        margin-right: 60px;
+        margin-right: 65px;
         color: #5D2524;
         font-family: rounded-bold;
         display: block;
@@ -447,7 +494,7 @@
         height: 3px;
         background-color: $brown-bg;
         left: 0;
-        bottom: -11px;
+        bottom: -7px;
         border-radius: 3px;
     }
 }

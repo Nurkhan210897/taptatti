@@ -7,7 +7,7 @@
             <img src="../assets/images/logo.png" alt />
           </div>
         </div>
-        <div class="col-xl-9 pl-0">
+        <div class="col-xl-9 minus-m pl-0">
           <div class="nav">
             <ul class="nav-links">
               <li>

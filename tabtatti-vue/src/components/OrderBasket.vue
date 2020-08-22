@@ -84,7 +84,7 @@
             </button>
           </form>
         </div>
-        <div class="delivery-pickup mt-4 padding-block">
+        <div class="delivery-pickup padding-block">
           <div class="tabs-btn">
             <a
               href="#"
@@ -119,7 +119,7 @@
           </keep-alive>
         </div>
       </div>
-      <div class="col-xl-3">
+      <div class="col-xl-3 pl-2">
         <div class="order">
           <div class="order-header">
             <img src="@/assets/images/order.png" alt />
@@ -131,15 +131,15 @@
                 <p>Кол-во товаров</p>
                 <b>{{ totalCount }}</b>
               </li>
-              <li>
+              <li class="total-sum">
                 <p>Сумма:</p>
-                <b>{{ totalSum }}₸</b>
+                <b>{{ totalSum }}<span>₸</span></b>
               </li>
             </ul>
             <ul>
               <li>
                 <p>Доставка</p>
-                <b>{{ deliveryPrice }}₸</b>
+                <b>{{ deliveryPrice }} ₸</b>
               </li>
               <li>
                 <p>
@@ -165,18 +165,21 @@
               <li>
                 <p class="blue-text">Не тратить бонусы</p>
               </li>
-            </ul>
-            <ul>
-              <li>
+              <li class="mt-2">
                 <p>Промокод</p>
-                <b>{{promoCod }}</b>
+                <b>-{{promoCod }}₸</b>
               </li>
-              <li class="green-text">Активный</li>
+              <li>
+                <p class="green-text">Активный</p>
+              </li>
             </ul>
-            <ul>
+            <ul class="price-product">
               <li>
                 <p>Сумма к оплате</p>
-                <b>{{totalPay}}₸</b>
+                <div class="total-pay">
+                  <b class="small">{{oldPrice}}<span>₸</span> </b>
+                  <b>{{totalPay}}<span>₸</span> </b>
+                </div>
               </li>
               <div class="info-order">
                 <button type="button" class="brown-btn">Сделать заказ</button>
@@ -210,7 +213,7 @@
                 <p>Кол-во товаров</p>
                 <b>{{ product.length }}</b>
               </li>
-              <li>
+              <li class="total-sum">
                 <p>Сумма:</p>
                 <b>{{ totalSum }}₸</b>
               </li>
@@ -261,7 +264,7 @@
             <ul>
               <li>
                 <p>Сумма к оплате</p>
-                <b>{{totalPay }}₸</b>
+                <b>{{totalPay }} ₸</b>
               </li>
               <div class="info-order">
                 <button type="button" class="brown-btn">Сделать заказ</button>
@@ -309,6 +312,7 @@ export default {
     toBonus: 700,
     promoCod: 5000,
     totalPay: 0,
+    totalSum: 0,
     product: [
       {
         img: require("@/assets/images/assorti1.png"),
@@ -329,21 +333,19 @@ export default {
       {
         img: require("@/assets/images/assorti3.png"),
         title: "Вода A'SU негазированная",
-        deskr:
-          "Ароматные, тонкие коржи на основе натурально...Ароматные, тонкие коржи на основе натурально...",
         price: 2700,
         count: 1
       }
-    ],
-    totalSum: 0
+    ]
   }),
+
   methods: {
     deleteProduct(key, item) {
       this.minusPrice(item.price * item.count, item.count);
       this.product.splice(key, 1);
     },
     orderSum() {
-      for (var key in this.product) {
+      for (let key in this.product) {
         this.totalSum += this.product[key].price;
       }
     },
@@ -364,20 +366,27 @@ export default {
       this.totalPay = this.totalPay - this.bonus;
       this.bonus -= this.toBonus;
     },
-    countTotalPay(){
+    countTotalPay() {
       this.totalPay = this.totalSum + this.deliveryPrice - this.promoCod;
+    },
+
+  },
+  watch: {
+    totalSum() {
+      this.countTotalPay();
     }
   },
-  watch:{
-    totalSum(){
-      this.countTotalPay();
+  computed:{
+    oldPrice() {
+      return this.totalSum + this.deliveryPrice;
+      console.log(this.totalSum + this.deliveryPrice);
     }
   },
   mounted() {
     this.orderSum();
     this.totalCount = this.product.length;
-    this.countTotalPay(); 
-    this.bonus = this.toBonus
+    this.countTotalPay();
+    this.bonus = this.toBonus;
   }
 };
 </script>

@@ -1,16 +1,11 @@
 @font-face {
     font-family: rounded-regular;
-    src: url("./assets/fonts/Rounded_Regular.otf");
-}
-
-@font-face {
-    font-family: Rounded_SemiBold;
-    src: url("./assets/fonts/Rounded_SemiBold.otf");
+    src: url("./assets/fonts/Monotype  - VAG Rounded Next Regular.otf");
 }
 
 @font-face {
     font-family: rounded-bold;
-    src: url("./assets/fonts/rounded-bold.otf");
+    src: url("./assets/fonts/Monotype  - VAG Rounded Next Bold.otf");
 }
 
 @font-face {
@@ -18,13 +13,23 @@
     src: url("./assets/fonts/AppetiteProMedium.otf");
 }
 
+@font-face {
+    font-family: rounded-medium;
+    src: url("./assets/fonts/Monotype  - VAG Rounded Next Medium.otf");
+}
+
+@font-face {
+    font-family: rounded-light;
+    src: url("./assets/fonts/Monotype  - VAG Rounded Next Light.otf");
+}
+
 p {
-    font-family: rounded-regular;
+    font-family: rounded-medium;
     color: #5D2524;
 }
 
 a {
-    font-family: rounded-regular;
+    font-family: rounded-medium;
 }
 
 .title-page {
@@ -51,9 +56,28 @@ $yellow-bg: #FFF2D3;
 }
 
 .blue-text {
-    color: #4ABBC1;
+    color: #4ABBC1 !important;
 }
 
 .green-text {
-    color: #5BBD76;
+    color: #5BBD76 !important;
+}
+
+.total-sum {
+    b {
+        font-size: 18px !important;
+        letter-spacing: 0.03em;
+    }
+    span {
+        font-size: 15px;
+        letter-spacing: 0.03em;
+    }
+}
+
+.small {
+    span {
+        font-size: 12px !important;
+        text-decoration: line-through;
+        line-height: 17px;
+    }
 }
