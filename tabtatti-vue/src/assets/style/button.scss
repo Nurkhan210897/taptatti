@@ -13,12 +13,18 @@
 
 .brown-btn {
     background-color: #5D2524;
-    width: 100%;
+    width: fit-content;
     color: #fff;
     font-family: rounded-regular;
+    padding: 13px 46px;
     font-size: 18px;
     border-radius: 12px;
     border: none;
     margin: 1rem 0;
     transition: all .5s ease;
+    &:hover {
+        text-decoration: none;
+        color: #fff;
+        background-color: #774d4c;
+    }
 }

@@ -10,7 +10,7 @@
             </p>
           </div>
         </div>
-        <div class="products-main">
+        <div class="products-main" v-if="product.length > 0">
           <div class="product-count">
             <p>
               Количество товаров:
@@ -25,6 +25,19 @@
             @addPrice="addPrice"
             @minusPrice="minusPrice"
           />
+        </div>
+        <div class="cart-empty" v-else>
+          <div class="product-count">
+            <p>
+              Количество товаров:
+              <b>{{product.length}}</b>
+            </p>
+          </div>
+          <div class="cart-empty-content">
+            <h6>Корзина пуста</h6>
+            <p class="silver-text">Выберите продукт из меню</p>
+            <a href="#" type="button" class="brown-btn">Перейти в меню</a>
+          </div>
         </div>
         <div class="contact-info padding-block">
           <div class="title">
@@ -133,7 +146,10 @@
               </li>
               <li class="total-sum">
                 <p>Сумма:</p>
-                <b>{{ totalSum }}<span>₸</span></b>
+                <b>
+                  {{ totalSum.toLocaleString() }}
+                  <span>₸</span>
+                </b>
               </li>
             </ul>
             <ul>
@@ -163,7 +179,13 @@
                 </span>
               </li>
               <li>
-                <p class="blue-text">Не тратить бонусы</p>
+                <a
+                  href="#"
+                  class="blue-text"
+                  @click.prevent="addBonus"
+                  v-if="this.bonus > 1"
+                >Потратить бонусы</a>
+                <a href="#" class="blue-text" @click.prevent="returnBonus" v-else>Не тратить бонусы</a>
               </li>
               <li class="mt-2">
                 <p>Промокод</p>
@@ -177,8 +199,14 @@
               <li>
                 <p>Сумма к оплате</p>
                 <div class="total-pay">
-                  <b class="small">{{oldPrice}}<span>₸</span> </b>
-                  <b>{{totalPay}}<span>₸</span> </b>
+                  <b class="small">
+                    {{oldPrice.toLocaleString()}}
+                    <span>₸</span>
+                  </b>
+                  <b>
+                    {{totalPay.toLocaleString()}}
+                    <span>₸</span>
+                  </b>
                 </div>
               </li>
               <div class="info-order">
@@ -215,7 +243,7 @@
               </li>
               <li class="total-sum">
                 <p>Сумма:</p>
-                <b>{{ totalSum }}₸</b>
+                <b>{{ totalSum.toLocaleString() }}₸</b>
               </li>
             </ul>
             <ul>
@@ -264,7 +292,7 @@
             <ul>
               <li>
                 <p>Сумма к оплате</p>
-                <b>{{totalPay }} ₸</b>
+                <b>{{totalPay.toLocaleString() }} ₸</b>
               </li>
               <div class="info-order">
                 <button type="button" class="brown-btn">Сделать заказ</button>
@@ -322,7 +350,7 @@ export default {
           "Ароматные, тонкие коржи на основе натурально...Ароматные, тонкие коржи на основе натурально...",
         price: 8100,
         count: 1,
-        info: 'Доставка может затянуться до 2 часов.'
+        info: "Доставка может затянуться до 2 часов."
       },
       {
         img: require("@/assets/images/assorti2.png"),
@@ -332,7 +360,7 @@ export default {
           "Круглый торт, состоит из 3 коржей шоколадного бисквита, между слоями бисквита равномерно нанесен...",
         price: 2700,
         count: 1,
-        info: 'Возможно в каких-либо магазинах нет в наличии.'
+        info: "Возможно в каких-либо магазинах нет в наличии."
       },
       {
         img: require("@/assets/images/assorti3.png"),
@@ -372,18 +400,16 @@ export default {
     },
     countTotalPay() {
       this.totalPay = this.totalSum + this.deliveryPrice - this.promoCod;
-    },
-
+    }
   },
   watch: {
     totalSum() {
       this.countTotalPay();
     }
   },
-  computed:{
-    oldPrice() {
+  computed: {
+    oldPrice(e) {
       return this.totalSum + this.deliveryPrice;
-      console.log(this.totalSum + this.deliveryPrice);
     }
   },
   mounted() {

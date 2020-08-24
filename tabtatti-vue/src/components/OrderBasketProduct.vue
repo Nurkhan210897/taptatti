@@ -1,5 +1,4 @@
 <template>
-  <div>
     <div class="product" >
       <div class="product-img-deskr">
         <div class="product-img">
@@ -37,7 +36,6 @@
         </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script>

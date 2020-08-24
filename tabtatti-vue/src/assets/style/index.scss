@@ -117,8 +117,9 @@
                 display: flex;
                 align-items: center;
                 p {
-                    margin: 0 12px;
                     font-size: 14px;
+                    padding: 5px 12px;
+                    background-color: #FFFCF6;
                 }
                 span {
                     background-color: #FFF2D3;
@@ -129,6 +130,12 @@
                     font-size: 12px;
                     &:hover {
                         background-color: #ffd779;
+                    }
+                    &:first-child {
+                        border-radius: 4px 0px 0px 4px;
+                    }
+                    &:last-child {
+                        border-radius: 0px 4px 4px 0px;
                     }
                 }
             }
@@ -149,6 +156,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    h1 {
+        margin-bottom: 0;
+        font-size: 41px;
+    }
     .add-product {
         border: 2px solid $brown-text;
         height: fit-content;
@@ -195,7 +206,7 @@
         margin-top: 22px;
         h3 {
             margin: 0;
-            font-family: rounded-bold;
+            font-family: rounded-medium;
             font-size: 25px;
         }
         img {
@@ -221,7 +232,7 @@
                 padding: 13px 50px 15px;
                 width: 100%;
                 color: #fff;
-                font-family: rounded-regular;
+                font-family: rounded-bold;
                 font-size: 18px;
                 border-radius: 12px;
                 border: none;
@@ -606,6 +617,10 @@
         position: relative;
         input {
             padding: 12px 53px 12px 12px;
+            &::placeholder {
+                color: $brown-text;
+                font-family: rounded-regular;
+            }
         }
         button {
             border: none;
@@ -665,5 +680,25 @@
     label {
         margin-left: 0;
         margin-bottom: 10px;
+    }
+}
+
+.cart-empty {
+    background: #FFFFFF;
+    box-shadow: 0px 12px 11px -11px rgba(0, 138, 182, 0.12);
+    border-radius: 10px;
+    margin-top: 2rem;
+    .product-count {
+        padding: 35px 50px 0;
+    }
+}
+
+.cart-empty-content {
+    text-align: center;
+    padding: 104px 0;
+    h6 {
+        font-size: 21px;
+        font-family: rounded-medium;
+        color: $brown-text;
     }
 }
