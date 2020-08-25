@@ -8,7 +8,9 @@
               <span></span>
             </div>
             <div class="logo">
-              <img src="../assets/images/logo.png" alt />
+              <router-link to="/home">
+                <img src="../assets/images/logo.png" alt />
+              </router-link>
             </div>
             <div class="mobile-cart">
               <i>
@@ -59,16 +61,16 @@
                   <v-select :options="lang" :clearable="false"></v-select>
                 </li>
                 <li class="bonus-user">
-                  <img src="@/assets/images/user.png" alt />
+                  <img src="@/assets/icons/user.svg" alt />
                   <div>
                     <b>250</b>
                     <p>бонусы</p>
                   </div>
                 </li>
                 <li class="basket-head">
-                  <a href="#">
-                    <img src="@/assets/images/cart.png" alt />
-                  </a>
+                  <router-link to="/OrderBasket">
+                     <img src="@/assets/icons/cart.svg" alt />
+                  </router-link>
                 </li>
               </ul>
             </div>
@@ -77,7 +79,7 @@
         <div class="nav-mobile" :class="{activeMenu}">
           <div class="bonus-mobile">
             <div class="bonus-user">
-              <img src="@/assets/images/user.png" alt />
+              <img src="@/assets/icons/user.svg" alt />
               <div>
                 <b>250</b>
                 <p>бонусы</p>

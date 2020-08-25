@@ -18,6 +18,9 @@
     font-family: rounded-regular;
     padding: 13px 46px;
     font-size: 18px;
+    line-height: 25px;
+    text-align: center;
+    letter-spacing: 0.045em;
     border-radius: 12px;
     border: none;
     margin: 1rem 0;
@@ -27,4 +30,58 @@
         color: #fff;
         background-color: #774d4c;
     }
+}
+
+.btn-outline {
+    border-radius: 10px;
+    border: 2px solid $brown-bg;
+    background-color: transparent;
+    font-size: 13px;
+    font-family: rounded-bold;
+    color: $brown-text;
+    padding: 9px 14px;
+    transition: all .5s ease;
+    i {
+        color: #4ABBC1;
+        margin-right: 9px;
+    }
+    &:hover {
+        background-color: $brown-bg !important;
+        color: #fff !important;
+    }
+    &:focus {
+        outline: none;
+    }
+}
+
+.btn-outline-yellow {
+    border: 2px solid #FCF18C;
+    border-radius: 12px;
+    background-color: transparent;
+    font-size: 13px;
+    font-family: rounded-bold;
+    padding: 9px 14px;
+    transition: all .5s ease;
+    color: #fff;
+    i {
+        color: #4ABBC1;
+        margin-right: 9px;
+    }
+    &:hover {
+        background-color: #FCF18C !important;
+        color: #fff !important;
+    }
+}
+
+.btn-outline-blue {
+    border-radius: 10px;
+    border: 2px solid $blue-bg;
+    background-color: transparent;
+    font-family: rounded-bold;
+    padding: 4px 11px;
+    transition: all .5s ease;
+    color: $blue-text;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 0.035em;
 }

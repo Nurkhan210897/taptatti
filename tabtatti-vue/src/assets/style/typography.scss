@@ -14,6 +14,11 @@
 }
 
 @font-face {
+    font-family: appetite-rounded;
+    src: url("./assets/fonts/Appetite_Rounded.otf");
+}
+
+@font-face {
     font-family: rounded-medium;
     src: url("./assets/fonts/Monotype  - VAG Rounded Next Medium.otf");
 }
@@ -23,6 +28,12 @@
     src: url("./assets/fonts/Monotype  - VAG Rounded Next Light.otf");
 }
 
+$brown-text: #5D2524;
+$brown-bg: #5D2524;
+$blue-bg: #4ABBC1;
+$blue-text: #4ABBC1;
+$yellow-bg: #FFF2D3;
+$silver-text: #C2B1A8;
 p {
     font-family: rounded-medium;
     color: #5D2524;
@@ -32,9 +43,39 @@ a {
     font-family: rounded-medium;
 }
 
+b {
+    font-family: rounded-bold;
+}
+
+.small-text {
+    font-size: 13px !important;
+}
+
 .title-page {
     font-family: appetite-medium;
     color: #5D2524;
+}
+
+.title-category {
+    font-size: 30px;
+    p,
+    h1 {
+        font-family: appetite-medium;
+    }
+    h1 {
+        font-size: 41px;
+        line-height: 48px;
+        letter-spacing: -0.017em;
+    }
+}
+
+.title-product {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    h1 {
+        color: $brown-text;
+    }
 }
 
 .title {
@@ -44,15 +85,20 @@ a {
         font-family: rounded-bold;
         letter-spacing: 0.04em;
     }
+    h1 {
+        font-family: appetite-medium;
+    }
+    h2 {
+        font-family: rounded-bold;
+    }
 }
 
-$brown-text: #5D2524;
-$brown-bg: #5D2524;
-$blue-bg: #4ABBC1;
-$blue-text: #4ABBC1;
-$yellow-bg: #FFF2D3;
 .silver-text {
     color: #C2B1A8;
+}
+
+.blue-bg {
+    background-color: #4ABBC1;
 }
 
 .red-text {
