@@ -43,6 +43,7 @@ body {
     background-image: url("./assets/images/bg-head.png");
     background-size: 100% 100%;
     z-index: 999;
+    position: relative;
     .logo {
         position: relative;
         img {
@@ -236,4 +237,67 @@ body {
 .activeMenu {
     transform: translate(0);
     transition: all .5s ease;
+}
+
+.bottom-nav {
+    background: #FCF18C;
+    box-shadow: 0px 5px 10px -6px rgba(25, 52, 61, 0.31);
+    padding: 35px 0 22px;
+    display: flex;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    top: 87px;
+    ul {
+        display: flex;
+        padding: 0;
+        margin-bottom: 0;
+        li {
+            list-style-type: none;
+            margin-right: 60px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            &:after {
+                content: '';
+                width: 4px;
+                height: 4px;
+                background-color: $blue-bg;
+                position: absolute;
+                right: -30px;
+                border-radius: 50%;
+            }
+            a {
+                color: $brown-text;
+                font-size: 17px;
+                line-height: 23px;
+                letter-spacing: 0.06em;
+                text-decoration: none;
+                &:hover {
+                    color: #4ABBC1;
+                }
+            }
+        }
+    }
+    .bottom-nav-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .call {
+        display: flex;
+        align-items: center;
+        img {
+            margin-right: 9px;
+        }
+        a {
+            font-size: 20px;
+            line-height: 24px;
+            text-align: right;
+            letter-spacing: 0.05em;
+            font-family: rounded-bold;
+            color: $brown-text;
+        }
+    }
 }

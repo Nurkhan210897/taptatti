@@ -69,7 +69,7 @@
     }
     &:hover {
         background-color: #FCF18C !important;
-        color: #fff !important;
+        color: $brown-text !important;
     }
 }
 
@@ -84,4 +84,16 @@
     font-size: 12px;
     line-height: 18px;
     letter-spacing: 0.035em;
+    display: flex;
+    align-items: center;
+    img {
+        margin-right: 8px;
+    }
+    &:hover {
+        background-color: $blue-bg;
+        color: #fff;
+        img {
+            filter: brightness(4.5);
+        }
+    }
 }

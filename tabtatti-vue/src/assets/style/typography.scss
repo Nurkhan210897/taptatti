@@ -69,6 +69,27 @@ b {
     }
 }
 
+.title-reg {
+    h2 {
+        font-family: appetite-medium;
+        color: $brown-text;
+        font-size: 30.8px;
+        line-height: 36px;
+        letter-spacing: -0.017em;
+        position: relative;
+        &::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 8px;
+            background: #FCF18C;
+            border-radius: 8px;
+            bottom: 0;
+            z-index: -1;
+        }
+    }
+}
+
 .title-product {
     display: flex;
     align-items: center;

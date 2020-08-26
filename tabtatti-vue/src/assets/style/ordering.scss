@@ -143,7 +143,8 @@
         transition: all .5s ease;
         font-size: 12px;
         &:hover {
-            background-color: #ffd779;
+            background-color: $brown-bg;
+            color: #fff;
         }
         &:first-child {
             border-radius: 4px 0px 0px 4px;

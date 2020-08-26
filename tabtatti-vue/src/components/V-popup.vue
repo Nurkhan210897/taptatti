@@ -1,10 +1,12 @@
 <template>
   <div class="popup-wrapper" ref="popup-wrapper">
-    <span class="exit" @click="exitPopup">
-      <img src="@/assets/icons/exit.svg" alt />
-    </span>
-    <div class="modal-product">
-      <slot></slot>
+    <div class="container">
+      <div class="modal-product">
+        <span class="exit" @click="exitPopup">
+          <i class="fas fa-times"></i>
+        </span>
+        <slot></slot>
+      </div>
     </div>
   </div>
 </template>
@@ -15,18 +17,18 @@ export default {
   props: {
     product: Object
   },
-  methods:{
-    exitPopup(){
-      this.$emit('exitPopup')
-    },
+  methods: {
+    exitPopup() {
+      this.$emit("exitPopup");
+    }
   },
-  mounted(){
+  mounted() {
     let vm = this;
-    document.addEventListener('click', function(e){
-      if(e.target === vm.$refs['popup-wrapper']){
-        console.log('123')
+    document.addEventListener("click", function(e) {
+      if (e.target === vm.$refs["popup-wrapper"]) {
+        console.log("123");
       }
-    })
+    });
   }
 };
 </script>

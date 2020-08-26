@@ -79,13 +79,12 @@
 }
 
 .all-products {
-    padding-top: 30px;
+    padding-top: 23px;
 }
 
 .products {
     background-color: #fff;
-    margin-top: 45px;
-    position: relative;
+    margin-top: 40px;
     .col-xl-4 {
         position: static;
     }
@@ -93,11 +92,23 @@
         padding-bottom: 20px;
         border-radius: 10px;
         transition: all .5s ease;
+        position: relative;
+        margin-bottom: 50px;
+        cursor: pointer;
         &:hover {
             box-shadow: 0px 7px 19px -7px rgba(132, 92, 14, 0.2);
+            .titles {
+                p {
+                    color: $blue-text;
+                }
+            }
         }
         .products-img {
             cursor: pointer;
+        }
+        .product-features {
+            margin-left: 25px;
+            position: absolute;
         }
     }
     .all-products {
@@ -148,6 +159,9 @@
         min-height: 164px;
         max-height: 164px;
         margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         img {
             width: 100%;
         }
@@ -185,114 +199,6 @@
     }
     .order-header {
         margin-top: 60px;
-    }
-}
-
-.popup-wrapper {
-    background-color: #fff;
-    top: 0;
-    left: 0;
-    max-width: 100%;
-    position: absolute;
-    background: #FFFFFF;
-    box-shadow: 0px 3px 20px -7px rgba(132, 92, 14, 0.3);
-    border-radius: 10px;
-    .modal-left {
-        padding: 30px 40px;
-        .modal-img {
-            text-align: center;
-            margin: 20px 0;
-            img {
-                width: 80%;
-                max-width: 80%;
-            }
-        }
-        .modal-bottom {
-            ul {
-                padding: 0;
-                columns: 2;
-                max-height: 150px;
-                margin-top: 25px;
-                li {
-                    list-style-type: none;
-                    display: flex;
-                    justify-content: space-between;
-                    margin-bottom: 10px;
-                    p {
-                        color: $silver-text;
-                        display: flex;
-                        justify-content: space-between;
-                        font-size: 12px;
-                    }
-                    span {
-                        color: $brown-text;
-                        font-size: 12px;
-                        width: 50%;
-                        &:last-child {
-                            text-align: left;
-                            font-family: rounded-bold;
-                        }
-                    }
-                }
-            }
-        }
-    }
-    .modal-right {
-        height: 100%;
-        padding: 40px;
-        background: #FFFCF3;
-        border-radius: 0px 10px 10px 0px;
-        .title {
-            margin-bottom: 20px;
-        }
-        .modal-deskr {
-            p {
-                font-size: 13px;
-                line-height: 18px;
-                letter-spacing: 0.035em;
-            }
-        }
-        .composition {
-            display: flex;
-            align-items: baseline;
-            b {
-                color: $brown-text;
-                margin-right: 10px;
-                font-size: 14px;
-                font-family: rounded-bold;
-            }
-            p {
-                margin: 0;
-                font-size: 13px;
-            }
-        }
-        .product-count {
-            justify-content: space-between;
-            h3 {
-                font-family: rounded-bold;
-                color: $brown-text;
-            }
-        }
-    }
-}
-
-.exit {
-    position: absolute;
-    z-index: 9;
-    right: -25px;
-    top: -25px;
-    cursor: pointer;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    background: #FFFFFF;
-    box-shadow: 0px 3px 13px -5px rgba(132, 92, 14, 0.39);
-    border-radius: 50%;
-    &:hover {
-        background-color: #FFFCF3;
     }
 }
 

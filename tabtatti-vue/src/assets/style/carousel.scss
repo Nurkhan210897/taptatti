@@ -68,7 +68,6 @@
 .slider-text {
     position: absolute;
     max-width: 8%;
-    margin-left: 2.8%;
     top: 17%;
     h2 {
         font-size: 62px;
@@ -121,5 +120,75 @@
     .slick-next {
         background-image: url(./assets/icons/right-slider.svg) !important;
         right: -55px;
+    }
+}
+
+.select {
+    display: flex;
+}
+
+.vueperslide__content-wrapper {
+    box-shadow: none !important;
+}
+
+.slider-for {
+    .vueperslides__parallax-wrapper {
+        height: 300px;
+        padding: 0;
+        .vueperslide--visible {
+            background-size: 100% !important;
+        }
+    }
+}
+
+.vueperslide__content-wrapper {
+    box-shadow: 0px 0px 7px rgba(180, 140, 104, 0.18);
+}
+
+.slider-nav {
+    width: 270px;
+    margin: 0 auto;
+    .vueperslide {
+        background-size: 70px;
+        background-repeat: no-repeat;
+        width: 80px !important;
+        height: 80px !important;
+        margin: 0 5px;
+    }
+    .vueperslide--active {
+        border: 2px solid #4ABBC1;
+        border-radius: 4px;
+    }
+}
+
+.vueperslides:not(.no-shadow):not(.vueperslides--3d) .vueperslides__parallax-wrapper:after,
+.vueperslides:not(.no-shadow):not(.vueperslides--3d) .vueperslides__parallax-wrapper:before {
+    box-shadow: none !important;
+}
+
+.vueperslides__arrow--prev {
+    left: -2em !important;
+    background-image: url(./assets/icons/prev-product.svg) !important;
+}
+
+.vueperslides__arrow--next {
+    right: -2em !important;
+    background-image: url(./assets/icons/right-product.svg) !important;
+}
+
+.vueperslides__arrow {
+    transform: translateY(-100%) !important;
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    svg {
+        display: none;
+    }
+    &:focus {
+        outline: none;
+    }
+    &:hover {
+        opacity: .7;
     }
 }
