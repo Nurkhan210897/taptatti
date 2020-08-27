@@ -1,5 +1,4 @@
 <template>
-  <div :class="{ activeModal: isActiveModal }">
     <div class="home">
       <div class="main-slider">
         <VueSlickCarousel :arrows="true" :dots="true">
@@ -291,7 +290,6 @@
         </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script>

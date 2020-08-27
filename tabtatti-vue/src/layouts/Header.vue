@@ -10,7 +10,7 @@
               </div>
               <div class="logo">
                 <router-link to="/home">
-                  <img src="../assets/images/logo.png" alt />
+                  <img src="../assets/images/logo.svg" alt />
                 </router-link>
               </div>
               <div class="mobile-cart">
@@ -64,18 +64,29 @@
                     ></v-select>
                   </li>
                   <li class="lang-select">
-                    <v-select
-                      :options="lang"
-                      label="value"
-                      :clearable="false"
-                      v-model="selectlang"
-                    ></v-select>
+                    <v-select :options="lang" label="value" :clearable="false" v-model="selectlang"></v-select>
                   </li>
-                  <li class="bonus-user">
+                  <li class="bonus-user dropdown">
                     <img src="@/assets/icons/user.svg" alt />
                     <div>
                       <b>250</b>
                       <p>бонусы</p>
+                    </div>
+                    <div class="dropdown-menu">
+                      <ul>
+                        <li>
+                          <img src="@/assets/icons/profile.svg" alt />
+                          <a href="#">Профиль</a>
+                        </li>
+                        <li>
+                          <img src="@/assets/icons/settings.svg" alt />
+                          <a href="#">Настройки</a>
+                        </li>
+                        <li>
+                          <img src="@/assets/icons/exit-profile.svg" alt />
+                          <a href="#">Выход</a>
+                        </li>
+                      </ul>
                     </div>
                   </li>
                   <li class="basket-head">
@@ -103,7 +114,7 @@
                 <v-select :options="options" label="value" :clearable="false" v-model="selectCity"></v-select>
               </li>
               <li class="lang-select">
-                <v-select :options="lang"  label="value" :clearable="false" v-model="selectLang"></v-select>
+                <v-select :options="lang" label="value" :clearable="false" v-model="selectLang"></v-select>
               </li>
             </ul>
             <div class="title-link">
@@ -183,8 +194,8 @@ export default {
       render: createElement =>
         createElement("span", { class: { toggle: true } })
     },
-    selectCity: "Нур-Султан",
-    selectlang: "РУс",
+    selectCity: "Город",
+    selectlang: "Язык",
     options: ["Нур-Султан", "Алматы", "Шымкент"],
     lang: ["Рус", "Каз", "En"]
   }),

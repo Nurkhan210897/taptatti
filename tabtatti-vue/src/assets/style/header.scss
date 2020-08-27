@@ -29,13 +29,19 @@ body {
     display: flex;
     align-items: center;
     .v-select {
-        width: 124px;
+        min-width: 110px;
+        .vs__selecte {
+            font-size: 15px;
+            line-height: 21px;
+            letter-spacing: 0.03em;
+        }
     }
 }
 
 .lang-select {
     .v-select {
-        width: 70px;
+        min-width: 80px;
+        font-size: 15px;
     }
 }
 
@@ -85,6 +91,11 @@ body {
                     color: #5D2524;
                     font-family: rounded-regular;
                     letter-spacing: 0.045em;
+                    text-decoration: none;
+                    transition: all .2s ease;
+                    &:hover {
+                        color: $blue-text;
+                    }
                 }
             }
         }
@@ -244,11 +255,9 @@ body {
     box-shadow: 0px 5px 10px -6px rgba(25, 52, 61, 0.31);
     padding: 35px 0 22px;
     display: flex;
-    position: absolute;
-    left: 0;
     width: 100%;
     z-index: 1;
-    top: 87px;
+    margin-top: -3px;
     ul {
         display: flex;
         padding: 0;
@@ -274,6 +283,7 @@ body {
                 line-height: 23px;
                 letter-spacing: 0.06em;
                 text-decoration: none;
+                transition: all .2s ease;
                 &:hover {
                     color: #4ABBC1;
                 }
