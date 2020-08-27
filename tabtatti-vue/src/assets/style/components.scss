@@ -1,8 +1,30 @@
 .dropdown-menu {
+    padding: 25px 18px;
+    filter: drop-shadow(0px 0px 6px rgba(92, 55, 0, 0.1));
+    border: none;
+    top: 50px;
+    display: block;
     ul {
         background: #FFFFFF;
         border-radius: 8px;
         display: block !important;
+        li {
+            img {
+                width: 15px;
+                object-fit: none;
+                margin-right: 11px;
+            }
+            a {
+                color: $brown-text;
+                font-size: 15px;
+                line-height: 21px;
+                letter-spacing: 0.03em;
+                text-decoration: none;
+                &:hover {
+                    color: $blue-text;
+                }
+            }
+        }
     }
 }
 
@@ -351,13 +373,61 @@ label {
     }
 }
 
+.vs__dropdown-toggle {
+    cursor: pointer !important;
+    padding: 0 !important;
+}
+
+#vs5__listbox {
+    overflow: hidden;
+}
+
+#vs5__listbox {
+    margin-top: 5px !important;
+}
+
+.vs__search {
+    cursor: pointer;
+}
+
+.region-select .vs__dropdown-menu {
+    background-color: #fff !important;
+    border-radius: 8px;
+    right: -12px !important;
+    left: auto !important;
+    width: fit-content !important;
+    box-shadow: (0px 0px 6px rgba(92, 55, 0, 0.1));
+    padding: 15px 16px 10px;
+    font-size: 15px !important;
+    border: none;
+    margin-top: 10px;
+    div,
+    a,
+    span,
+    li {
+        background: none !important;
+        color: $brown-text;
+        font-family: rounded-bold;
+        margin-bottom: 5px;
+        position: relative;
+        &:hover {
+            color: $blue-text;
+        }
+        &::after {
+            content: url(./assets/icons/home.svg) !important;
+            position: absolute;
+            left: -5px;
+        }
+    }
+}
+
 .popup-wrapper {
     overflow-y: auto;
     background: rgba(255, 255, 255, 0.7);
     top: 0;
     left: 0;
     width: 100%;
-    height: fit-content;
+    height: 100%;
     position: fixed;
     box-shadow: 0px 3px 20px -7px rgba(132, 92, 14, 0.3);
     border-radius: 10px;
@@ -444,10 +514,10 @@ label {
 .modal-product {
     background-color: #fff;
     max-width: 920px;
-    margin-top: 5vh;
     box-shadow: 0px 3px 20px -7px rgba(132, 92, 14, 0.3);
     border-radius: 10px;
     position: relative;
+    margin: 5vh auto;
 }
 
 .exit {
@@ -480,6 +550,9 @@ label {
     width: 100%;
     background-color: #fff;
     z-index: 99;
+    box-shadow: 0px 3px 20px -7px rgba(132, 92, 14, 0.3);
+    border-radius: 10px;
+    margin-bottom: 5vh;
     .cake-reg-header {
         background: #FFFCF3;
         border-radius: 0px 10px 10px 0px;
@@ -587,6 +660,7 @@ label {
             line-height: 24px;
             letter-spacing: 0.035em;
             color: $blue-text;
+            text-decoration: none;
         }
     }
     h2 {

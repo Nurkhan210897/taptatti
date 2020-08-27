@@ -59,6 +59,7 @@
                 &:before {
                     font-size: 15px;
                     color: #FFFFFF;
+                    opacity: 1;
                 }
             }
         }
@@ -67,13 +68,13 @@
 
 .slider-text {
     position: absolute;
-    max-width: 8%;
+    max-width: 620px;
     top: 17%;
     h2 {
         font-size: 62px;
         letter-spacing: 0.02em;
         color: #fff;
-        font-family: appetite-medium;
+        font-family: appetite-rounded;
         margin: 0;
     }
     .slider-deskr {
@@ -104,6 +105,9 @@
 }
 
 .slider-product {
+    .slick-slide {
+        padding: 3px 0;
+    }
     .slick-arrow {
         width: 20px;
         height: 25px;
@@ -190,5 +194,31 @@
     }
     &:hover {
         opacity: .7;
+    }
+}
+
+@media only screen and (min-width: 900px) and (max-width: 1190px) {
+    .slider-text {
+        h2 {
+            font-size: 35px;
+        }
+        .slider-deskr {
+            p {
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1190px) and (max-width: 1490px) {
+    .slider-text {
+        h2 {
+            font-size: 45px;
+        }
+        .slider-deskr {
+            p {
+                font-size: 20px;
+            }
+        }
     }
 }

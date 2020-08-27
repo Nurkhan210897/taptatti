@@ -97,3 +97,17 @@
         }
     }
 }
+
+.button-modal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    button {
+        padding: 15px;
+        font-size: 15px;
+        line-height: 21px;
+        text-align: center;
+        letter-spacing: 0.03em;
+        margin: 28px 0 0;
+    }
+}

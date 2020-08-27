@@ -1,50 +1,90 @@
 <template>
-    <div class="home">
-      <div class="main-slider">
-        <VueSlickCarousel :arrows="true" :dots="true">
-          <div class="main-slider-item">
-            <img src="@/assets/images/main-slider.png" alt />
-            <div class="container">
-              <div class="slider-text">
-                <h2>Большой выбор тортов и выпечки</h2>
-                <div class="slider-deskr">
-                  <img src="@/assets/images/icon_prod.svg" alt />
-                  <p>Весь ассортимент приготовлен из качественных и свежих продуктов</p>
-                </div>
-                <button type="button" class="btn btn-outline-yellow">Наше меню</button>
+  <div class="home">
+    <div class="main-slider">
+      <VueSlickCarousel :arrows="true" :dots="true">
+        <div class="main-slider-item">
+          <img src="@/assets/images/main-slider.png" alt />
+          <div class="container">
+            <div class="slider-text">
+              <h2>Большой выбор тортов и выпечки</h2>
+              <div class="slider-deskr">
+                <img src="@/assets/images/icon_prod.svg" alt />
+                <p>Весь ассортимент приготовлен из качественных и свежих продуктов</p>
               </div>
+              <button type="button" class="btn btn-outline-yellow">Наше меню</button>
             </div>
           </div>
-          <div class="main-slider-item">
-            <img src="@/assets/images/main-slider2.png" alt />
+        </div>
+        <div class="main-slider-item">
+          <img src="@/assets/images/main-slider2.png" alt />
+          <div class="container">
+            <div class="slider-text">
+              <h2>Доставка по городу бесплатная</h2>
+
+              <div class="slider-deskr">
+                <img src="@/assets/icons/delivery-icon.svg" alt />
+                <p>
+                  При заказе от 7000 ₸
+                  <b>бесплатная</b> доставка в черте города!
+                </p>
+              </div>
+              <button type="button" class="btn btn-outline-yellow">Подробнее</button>
+            </div>
           </div>
-        </VueSlickCarousel>
-      </div>
+        </div>
+        <div class="main-slider-item">
+          <img src="@/assets/images/main-slider3.png" alt />
+          <div class="container">
+            <div class="slider-text">
+              <h2>10% скидка при самовывозе</h2>
+              <div class="slider-deskr">
+                <img src="@/assets/icons/bag.svg" alt />
+                <p>Удобно для тех кто едет по пути, рядом с нашими точками</p>
+              </div>
+              <button type="button" class="btn btn-outline-yellow">Подробнее</button>
+            </div>
+          </div>
+        </div>
+      </VueSlickCarousel>
+    </div>
+    <div class="main-category-wrapper">
       <div class="container">
         <div class="main-category">
           <div class="category">
-            <img src="@/assets/icons/category-1.svg" alt />
-            <p>Торты</p>
+            <a href="#">
+              <img src="@/assets/icons/category-1.svg" alt />
+              <p>Торты</p>
+            </a>
           </div>
           <div class="category">
-            <img src="@/assets/icons/category-2.svg" alt />
-            <p>Пироги</p>
+            <a href="#">
+              <img src="@/assets/icons/category-2.svg" alt />
+              <p>Пироги</p>
+            </a>
           </div>
           <div class="category">
-            <img src="@/assets/icons/category-3.svg" alt />
-            <p>Выпечка</p>
+            <a href="#">
+              <img src="@/assets/icons/category-3.svg" alt />
+              <p>Выпечка</p>
+            </a>
           </div>
           <div class="category">
-            <img src="@/assets/icons/category-4.svg" alt />
+            <a href="#">
+              <img src="@/assets/icons/category-4.svg" alt />
             <p>Пирожное</p>
+            </a>
           </div>
           <div class="category">
-            <img src="@/assets/icons/category-5.svg" alt />
+            <a href="#">
+              <img src="@/assets/icons/category-5.svg" alt />
             <p>Печенье</p>
+            </a>
           </div>
           <div class="category">
-            <img src="@/assets/icons/category-6.svg" alt />
+            <a href="#">
+              <img src="@/assets/icons/category-6.svg" alt />
             <p>Полуфабрикаты</p>
+            </a>
           </div>
         </div>
         <div class="slider-product">
@@ -56,21 +96,34 @@
               <img src="@/assets/images/new1.png" alt />
               <div class="new-product-text">
                 <p>Торт Аррива</p>
-                <div class="price">
+                <a href="#" class="price">
                   <span>от</span>
                   <p>700</p>
                   <span>₸</span>
-                </div>
+                </a>
               </div>
             </div>
             <div class="new-card">
               <img src="@/assets/images/new2.png" alt />
               <div class="new-product-text">
                 <p>Фруктовый пирог c творогом</p>
-                <div class="price">
+                <a href="#" class="price">
                   <span>от</span>
                   <p>500</p>
                   <span>₸</span>
+                </a>
+              </div>
+            </div>
+            <div class="new-card">
+              <img src="@/assets/images/new3.png" alt />
+              <div class="new-product-text">
+                <div class="new-product-text">
+                  <p>Тирамису</p>
+                  <a href="#" class="price">
+                    <span>от</span>
+                    <p>800</p>
+                    <span>₸</span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -79,217 +132,205 @@
               <div class="new-product-text">
                 <div class="new-product-text">
                   <p>Тирамису</p>
-                  <div class="price">
+                  <a href="#" class="price">
                     <span>от</span>
                     <p>800</p>
                     <span>₸</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="new-card">
-              <img src="@/assets/images/new3.png" alt />
-              <div class="new-product-text">
-                <div class="new-product-text">
-                  <p>Тирамису</p>
-                  <div class="price">
-                    <span>от</span>
-                    <p>800</p>
-                    <span>₸</span>
-                  </div>
+                  </a>
                 </div>
               </div>
             </div>
           </VueSlickCarousel>
         </div>
       </div>
-      <div class="products">
-        <div class="container">
-          <div class="row">
-            <div class="col-xl-9">
-              <div class="all-products" v-for="(item, index) in products" :key="index">
-                <div class="title-product">
-                  <div class="title-category">
-                    <h1>{{ item.title }}</h1>
-                  </div>
-                  <div class="product-address" v-if='index === 0'>
-                    <p>
-                      <b>
-                        Вы выбрали филиал
-                        <span class="blue-text">TapTatti №2</span>
-                        по адресу:
-                      </b>
-                      <span>{{ selected }}</span>
-                    </p>
-                    <div class="region-select" >
-                      <div class="select">
-                        <img src="@/assets/icons/home.svg" alt />
-                        <v-select
-                          :options="filials"
-                          label="value"
-                          :clearable="false"
-                          v-model="selected"
-                        ></v-select>
-                      </div>
+    </div>
+    <div class="products">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-9">
+            <div class="all-products" v-for="(item, index) in products" :key="index">
+              <div class="title-product">
+                <div class="title-category">
+                  <h1>{{ item.title }}</h1>
+                </div>
+                <div class="product-address" v-if="index === 0">
+                  <p>
+                    <b>
+                      Вы выбрали филиал
+                      <span class="blue-text">TapTatti №2</span>
+                      по адресу:
+                    </b>
+                    <span>{{ selected }}</span>
+                  </p>
+                  <div class="region-select">
+                    <div class="select">
+                      <img src="@/assets/icons/home.svg" alt />
+                      <v-select
+                        :options="filials"
+                        label="value"
+                        :clearable="false"
+                        v-model="selected"
+                      ></v-select>
                     </div>
                   </div>
                 </div>
-                <div class="product-link col-xl-10 p-0">
-                  <a href="#" v-for="(item, index) in item.ProductCategory" :key="index">{{ item }}</a>
+              </div>
+              <div class="product-link col-xl-10 p-0">
+                <a href="#" v-for="(item, index) in item.ProductCategory" :key="index">{{ item }}</a>
+              </div>
+              <div class="products row">
+                <Product
+                  v-for="product in item.productsContent"
+                  :key="product.titles"
+                  :product="product"
+                  @activeModal="isActiveModal=true"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3">
+            <div class="product-right">
+              <div class="order">
+                <div class="order-header">
+                  <h3>
+                    <img src="@/assets/icons/cart.svg" alt />Корзина
+                    <span class="basket-count">3</span>
+                  </h3>
+                  <span class="basket-delete">
+                    <img src="@/assets/icons/basket.svg" alt />
+                  </span>
                 </div>
-                <div class="products row">
-                  <Product
-                    v-for="product in item.productsContent"
-                    :key="product.titles"
-                    :product="product"
-                    @activeModal="isActiveModal=true"
-                  />
+                <div class="basket">
+                  <div class="basket-top">
+                    <div class="basket-img">
+                      <img src="@/assets/images/basket1.png" alt />
+                    </div>
+                    <div class="basket-deskr">
+                      <span class="delete-basket">
+                        <img src="@/assets/icons/exit-basket.svg" alt />
+                      </span>
+                      <b>Whoopie</b>
+                      <p class="silver-text">Круглый торт, состоит из 2 слоев бисквита...</p>
+                    </div>
+                  </div>
+                  <div class="product-count">
+                    <div class="count">
+                      <span>
+                        <i class="fas fa-minus"></i>
+                      </span>
+                      <p>1</p>
+                      <span>
+                        <i class="fas fa-plus"></i>
+                      </span>
+                    </div>
+                    <div class="total-count">
+                      <h3>2700 ₸</h3>
+                    </div>
+                  </div>
+                </div>
+                <div class="basket">
+                  <div class="basket-top">
+                    <div class="basket-img">
+                      <img src="@/assets/images/basket2.png" alt />
+                    </div>
+                    <div class="basket-deskr">
+                      <span class="delete-basket">
+                        <img src="@/assets/icons/exit-basket.svg" alt />
+                      </span>
+                      <b>Мясной пирог</b>
+                      <p class="silver-text">Воздушный, пористые коржи с легким, нежным</p>
+                    </div>
+                  </div>
+                  <div class="product-count">
+                    <div class="count">
+                      <span>
+                        <i class="fas fa-minus"></i>
+                      </span>
+                      <p>1</p>
+                      <span>
+                        <i class="fas fa-plus"></i>
+                      </span>
+                    </div>
+                    <div class="total-count">
+                      <h3>5000 ₸</h3>
+                    </div>
+                  </div>
+                </div>
+                <div class="basket">
+                  <div class="basket-top">
+                    <div class="basket-img">
+                      <img src="@/assets/images/product3.png" alt />
+                    </div>
+                    <div class="basket-deskr">
+                      <span class="delete-basket">
+                        <img src="@/assets/icons/exit-basket.svg" alt />
+                      </span>
+                      <b>Мясной пирог</b>
+                      <p class="silver-text">Воздушный, пористые коржи с легким, нежным</p>
+                    </div>
+                  </div>
+                  <div class="product-count">
+                    <div class="count">
+                      <span>
+                        <i class="fas fa-minus"></i>
+                      </span>
+                      <p>1</p>
+                      <span>
+                        <i class="fas fa-plus"></i>
+                      </span>
+                    </div>
+                    <div class="total-count">
+                      <h3>3000 ₸</h3>
+                    </div>
+                  </div>
+                </div>
+                <div class="basket-last">
+                  <p>
+                    <img src="@/assets/icons/delivery.svg" alt />Статус доставки
+                  </p>
+                  <div class="total-price">
+                    <p>Сумма заказа</p>
+                    <h3>2500₸</h3>
+                  </div>
+                  <button type="button" class="brown-btn">Оформить заказ</button>
+                  <span class="be-bonus">
+                    <p>
+                      <span class="silver-text">Начислится</span>
+                      <b>710</b> бонусов
+                    </p>
+                  </span>
                 </div>
               </div>
             </div>
-            <div class="col-xl-3">
-              <div class="product-right">
-                <div class="order">
-                  <div class="order-header">
-                    <h3>
-                      <img src="@/assets/icons/cart.svg" alt />Корзина
-                      <span class="basket-count">3</span>
-                    </h3>
-                    <span class="basket-delete">
-                      <img src="@/assets/icons/basket.svg" alt />
-                    </span>
-                  </div>
-                  <div class="basket">
-                    <div class="basket-top">
-                      <div class="basket-img">
-                        <img src="@/assets/images/basket1.png" alt />
-                      </div>
-                      <div class="basket-deskr">
-                        <span class="delete-basket">
-                          <img src="@/assets/icons/exit-basket.svg" alt />
-                        </span>
-                        <b>Whoopie</b>
-                        <p class="silver-text">Круглый торт, состоит из 2 слоев бисквита...</p>
-                      </div>
-                    </div>
-                    <div class="product-count">
-                      <div class="count">
-                        <span>
-                          <i class="fas fa-minus"></i>
-                        </span>
-                        <p>1</p>
-                        <span>
-                          <i class="fas fa-plus"></i>
-                        </span>
-                      </div>
-                      <div class="total-count">
-                        <h3>2700 ₸</h3>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="basket">
-                    <div class="basket-top">
-                      <div class="basket-img">
-                        <img src="@/assets/images/basket2.png" alt />
-                      </div>
-                      <div class="basket-deskr">
-                        <span class="delete-basket">
-                          <img src="@/assets/icons/exit-basket.svg" alt />
-                        </span>
-                        <b>Мясной пирог</b>
-                        <p class="silver-text">Воздушный, пористые коржи с легким, нежным</p>
-                      </div>
-                    </div>
-                    <div class="product-count">
-                      <div class="count">
-                        <span>
-                          <i class="fas fa-minus"></i>
-                        </span>
-                        <p>1</p>
-                        <span>
-                          <i class="fas fa-plus"></i>
-                        </span>
-                      </div>
-                      <div class="total-count">
-                        <h3>5000 ₸</h3>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="basket">
-                    <div class="basket-top">
-                      <div class="basket-img">
-                        <img src="@/assets/images/product3.png" alt />
-                      </div>
-                      <div class="basket-deskr">
-                        <span class="delete-basket">
-                          <img src="@/assets/icons/exit-basket.svg" alt />
-                        </span>
-                        <b>Мясной пирог</b>
-                        <p class="silver-text">Воздушный, пористые коржи с легким, нежным</p>
-                      </div>
-                    </div>
-                    <div class="product-count">
-                      <div class="count">
-                        <span>
-                          <i class="fas fa-minus"></i>
-                        </span>
-                        <p>1</p>
-                        <span>
-                          <i class="fas fa-plus"></i>
-                        </span>
-                      </div>
-                      <div class="total-count">
-                        <h3>3000 ₸</h3>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="basket-last">
-                    <p>
-                      <img src="@/assets/icons/delivery.svg" alt />Статус доставки
-                    </p>
-                    <div class="total-price">
-                      <p>Сумма заказа</p>
-                      <h3>2500₸</h3>
-                    </div>
-                    <button type="button" class="brown-btn">Оформить заказ</button>
-                    <span class="be-bonus">
-                      <p>
-                        <span class="silver-text">Начислится</span>
-                        <b>710</b> бонусов
-                      </p>
-                    </span>
-                  </div>
-                </div>
+            <div class="history-orders">
+              <div class="order-header">
+                <h3>
+                  <img src="@/assets/icons/clock.svg" alt />История заказов
+                </h3>
               </div>
-              <div class="history-orders">
-                <div class="order-header">
-                  <h3>
-                    <img src="@/assets/icons/clock.svg" alt />История заказов
-                  </h3>
-                </div>
-                <div class="history-orders-content">
-                  <p>14 июля 2020</p>
-                  <b>№ Almaty-3-51488</b>
-                  <p class="blue-text">Подробнее</p>
-                  <button class="btn btn-outline-yellow">Повторить</button>
-                </div>
-                <div class="all-history">
-                  <a href="#" class="blue-text">Полная история</a>
-                </div>
+              <div class="history-orders-content">
+                <p>14 июля 2020</p>
+                <b>№ Almaty-3-51488</b>
+                <p class="blue-text">Подробнее</p>
+                <button class="btn btn-outline-yellow">Повторить</button>
               </div>
-              <div class="promocod">
-                <form action>
-                  <input type="text" name id class="input-text" placeholder="Введите промокод" />
-                  <button type="submit">
-                    <i class="fas fa-arrow-right"></i>
-                  </button>
-                </form>
+              <div class="all-history">
+                <a href="#" class="blue-text">Полная история</a>
               </div>
+            </div>
+            <div class="promocod">
+              <form action>
+                <input type="text" name id class="input-text" placeholder="Введите промокод" />
+                <button type="submit">
+                  <i class="fas fa-arrow-right"></i>
+                </button>
+              </form>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -313,8 +354,9 @@ export default {
     },
     selected: "Смените филиал",
     filials: [
-      "г.Алматы, ул. Тимирязева, 93/1",
-      "г.Алматы, ул. Розбакиева, 38/1"
+      "TapTatti №1. ул.Кунаева 47",
+      "TapTatti №2. ул.Кордай 12",
+      "TapTatti №3. ул.Тимирязева 38/1"
     ],
     products: [
       {
@@ -922,10 +964,10 @@ export default {
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
             Composition: "Ванильный сахар, Пшеничная мука, Крем безе, Банан."
-          },
+          }
         ]
       },
-       {
+      {
         title: "Полуфабрикаты",
         ProductCategory: [
           "С курицей",
@@ -988,7 +1030,7 @@ export default {
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
             Composition: "Ванильный сахар, Пшеничная мука, Крем безе, Банан."
           },
-           {
+          {
             count: 1,
             img: require("@/assets/product-img/product50.png"),
             noMargarin: require("@/assets/icons/yellow.svg"),
@@ -998,7 +1040,7 @@ export default {
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
             Composition: "Ванильный сахар, Пшеничная мука, Крем безе, Банан."
           },
-           {
+          {
             count: 1,
             img: require("@/assets/product-img/product51.png"),
             noMargarin: require("@/assets/icons/yellow.svg"),
@@ -1007,7 +1049,7 @@ export default {
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
             Composition: "Ванильный сахар, Пшеничная мука, Крем безе, Банан."
-          },
+          }
         ]
       }
     ]

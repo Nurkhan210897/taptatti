@@ -1,6 +1,6 @@
 <template>
   <div class="col-xl-4">
-    <div class="product" @click="showModal">
+    <div class="product">
       <div class="product-features">
         <span v-if="product.hit">
           <img :src="product.hit" alt />
@@ -18,11 +18,14 @@
           <img :src="product.noMargarin" alt />
         </span>
       </div>
-      <div class="products-img">
+      <div  @click="showModal" class="show-modal">
+        <div class="products-img" >
         <img :src="product.img" alt />
       </div>
       <div class="titles">
         <p>{{product.titles}}</p>
+        <img src="@/assets/icons/info.svg" alt="">
+      </div>
       </div>
       <div class="product-count">
         <div class="count">
@@ -393,6 +396,10 @@
                   <p class="small-text">Стоимость:</p>
                   <h3>{{ totalPrice.toLocaleString() }}₸</h3>
                 </div>
+              </div>
+              <div class="button-modal">
+                <button class="btn brown-btn ">Купить сразу</button>
+                <button class="btn brown-btn ">Добавить в корзину</button>
               </div>
               <div class="reviews-header">
                 <div class="reviews-top">

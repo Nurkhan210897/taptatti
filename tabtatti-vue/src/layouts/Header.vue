@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="header-wrapper">
     <div class="header" id="header">
       <div class="container p-0">
         <div class="row">
@@ -9,8 +9,8 @@
                 <span></span>
               </div>
               <div class="logo">
-                <router-link to="/home">
-                  <img src="../assets/images/logo.svg" alt />
+                <router-link to="/">
+                  <img src="../assets/images/logo.png" alt />
                 </router-link>
               </div>
               <div class="mobile-cart">
@@ -66,13 +66,52 @@
                   <li class="lang-select">
                     <v-select :options="lang" label="value" :clearable="false" v-model="selectlang"></v-select>
                   </li>
-                  <li class="bonus-user dropdown">
-                    <img src="@/assets/icons/user.svg" alt />
+                  <li class="bonus-user dropdown" @click="showDrop" ref="dropdown-wrapper">
+                    <svg
+                      width="24"
+                      height="29"
+                      viewBox="0 0 24 29"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="user-icon"
+                    >
+                      <circle
+                        cx="12.1406"
+                        cy="7.33205"
+                        r="5.51564"
+                        stroke-width="2.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M2 26.8164V22.9885C2 17.3879 6.54021 12.8477 12.1409 12.8477C17.7415 12.8477 22.2817 17.3879 22.2817 22.9885V26.8164"
+                        stroke-width="2.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+
                     <div>
                       <b>250</b>
                       <p>бонусы</p>
                     </div>
-                    <div class="dropdown-menu">
+                    <div class="dropdown-menu" v-show="showDropdown">
+                      <ul>
+                        <li>
+                          <img src="@/assets/icons/profile.svg" alt @click="profile = !profile" />
+                          <a href="#">Профиль</a>
+                        </li>
+                        <li>
+                          <img src="@/assets/icons/settings.svg" alt />
+                          <a href="#">Настройки</a>
+                        </li>
+                        <li>
+                          <img src="@/assets/icons/exit-profile.svg" alt />
+                          <a href="#">Выход</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="dropdown-menu" v-show="profile">
                       <ul>
                         <li>
                           <img src="@/assets/icons/profile.svg" alt />
@@ -89,9 +128,15 @@
                       </ul>
                     </div>
                   </li>
-                  <li class="basket-head">
+                  <li class="basket-head dropdown">
                     <router-link to="/OrderBasket">
-                      <img src="@/assets/icons/cart.svg" alt />
+                      <img
+                        svg-inline
+                        svg-sprite
+                        alt="Vue logo"
+                        src="@/assets/icons/cart.svg"
+                        class="vue-logo"
+                      />
                     </router-link>
                   </li>
                 </ul>
@@ -188,22 +233,42 @@
 <script>
 export default {
   data: () => ({
+    showDropdown: false,
+    activeClass: {
+      type: String,
+      default: "is-active"
+    },
+    offset: {
+      type: Number,
+      default: 20
+    },
     activeMenu: false,
     burgerActive: false,
     OpenIndicator: {
       render: createElement =>
         createElement("span", { class: { toggle: true } })
     },
-    selectCity: "Город",
-    selectlang: "Язык",
+    selectCity: "Нур-Султан",
+    selectlang: "Рус",
     options: ["Нур-Султан", "Алматы", "Шымкент"],
     lang: ["Рус", "Каз", "En"]
   }),
   methods: {
+    showDrop() {
+      this.showDropdown = !this.showDropdown;
+    },
     mobileActive() {
       this.activeMenu = !this.activeMenu;
       this.burgerActive = !this.burgerActive;
     }
+  },
+  mounted() {
+    let vm = this;
+    document.addEventListener("click", function(e) {
+      if (e.target != vm.$refs["dropdown-wrapper"]) {
+        vm.showDropdown = false
+      }
+    });
   }
 };
 </script>

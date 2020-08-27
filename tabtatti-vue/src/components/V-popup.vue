@@ -1,12 +1,10 @@
 <template>
   <div class="popup-wrapper" ref="popup-wrapper">
-    <div class="container">
-      <div class="modal-product">
-        <span class="exit" @click="exitPopup">
-          <i class="fas fa-times"></i>
-        </span>
-        <slot></slot>
-      </div>
+    <div class="modal-product">
+      <span class="exit" @click="exitPopup">
+        <i class="fas fa-times"></i>
+      </span>
+      <slot></slot>
     </div>
   </div>
 </template>
@@ -26,7 +24,7 @@ export default {
     let vm = this;
     document.addEventListener("click", function(e) {
       if (e.target === vm.$refs["popup-wrapper"]) {
-        console.log("123");
+        vm.exitPopup() 
       }
     });
   }

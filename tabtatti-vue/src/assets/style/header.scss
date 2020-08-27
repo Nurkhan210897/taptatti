@@ -1,7 +1,6 @@
-body {
-    background-color: #EEFDFF;
-}
-
+// body {
+//     background-color: #EEFDFF;
+// }
 .container {
     padding: 0;
 }
@@ -23,6 +22,7 @@ body {
     font-weight: 600;
     font-family: rounded-regular;
     color: #5D2524;
+    margin-bottom: 3px;
 }
 
 .city-select {
@@ -45,11 +45,28 @@ body {
     }
 }
 
+.header-wrapper {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
 .header {
-    background-image: url("./assets/images/bg-head.png");
     background-size: 100% 100%;
     z-index: 999;
     position: relative;
+    background-color: #fff;
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 86px;
+        width: 100%;
+        height: 8px;
+        background-image: url("./assets/images/bottom-header.svg");
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
     .logo {
         position: relative;
         img {
@@ -117,7 +134,10 @@ body {
         color: #5D2524;
         font-family: rounded-regular;
         padding: 13px 14px;
-        img {
+        transition: all .5s ease;
+        cursor: pointer;
+        stroke: $brown-bg;
+        svg {
             margin-right: 11px;
         }
         b {
@@ -128,6 +148,15 @@ body {
             margin-bottom: 0;
             font-size: 11px;
             line-height: 10px;
+        }
+        &:hover {
+            background-color: $brown-bg;
+            stroke: #FCF18C;
+            color: #FCF18C;
+            p {
+                color: #FCF18C;
+                ;
+            }
         }
     }
     .basket-head {
@@ -258,6 +287,9 @@ body {
     width: 100%;
     z-index: 1;
     margin-top: -3px;
+    transform: translateY(-200%);
+    position: absolute;
+    transition: all 1s ease;
     ul {
         display: flex;
         padding: 0;
