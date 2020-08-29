@@ -51,39 +51,39 @@
       <div class="container">
         <div class="main-category">
           <div class="category">
-            <a href="#">
+            <a href="#1">
               <img src="@/assets/icons/category-1.svg" alt />
               <p>Торты</p>
             </a>
           </div>
           <div class="category">
-            <a href="#">
+            <a href="#2">
               <img src="@/assets/icons/category-2.svg" alt />
               <p>Пироги</p>
             </a>
           </div>
           <div class="category">
-            <a href="#">
+            <a href="#3">
               <img src="@/assets/icons/category-3.svg" alt />
               <p>Выпечка</p>
             </a>
           </div>
           <div class="category">
-            <a href="#">
+            <a href="#4">
               <img src="@/assets/icons/category-4.svg" alt />
-            <p>Пирожное</p>
+              <p>Пирожное</p>
             </a>
           </div>
           <div class="category">
-            <a href="#">
+            <a href="#5">
               <img src="@/assets/icons/category-5.svg" alt />
-            <p>Печенье</p>
+              <p>Печенье</p>
             </a>
           </div>
           <div class="category">
-            <a href="#">
+            <a href="#6">
               <img src="@/assets/icons/category-6.svg" alt />
-            <p>Полуфабрикаты</p>
+              <p>Полуфабрикаты</p>
             </a>
           </div>
         </div>
@@ -95,7 +95,10 @@
             <div class="new-card">
               <img src="@/assets/images/new1.png" alt />
               <div class="new-product-text">
-                <p>Торт Аррива</p>
+                <a href="#">
+                  Торт Аррива
+                  <img src="@/assets/icons/info.svg" alt />
+                </a>
                 <a href="#" class="price">
                   <span>от</span>
                   <p>700</p>
@@ -106,7 +109,10 @@
             <div class="new-card">
               <img src="@/assets/images/new2.png" alt />
               <div class="new-product-text">
-                <p>Фруктовый пирог c творогом</p>
+                <a href="#">
+                  Фруктовый пирог c творогом
+                  <img src="@/assets/icons/info.svg" alt />
+                </a>
                 <a href="#" class="price">
                   <span>от</span>
                   <p>500</p>
@@ -118,7 +124,10 @@
               <img src="@/assets/images/new3.png" alt />
               <div class="new-product-text">
                 <div class="new-product-text">
-                  <p>Тирамису</p>
+                  <a href="#">
+                    Тирамису
+                    <img src="@/assets/icons/info.svg" alt />
+                  </a>
                   <a href="#" class="price">
                     <span>от</span>
                     <p>800</p>
@@ -131,7 +140,10 @@
               <img src="@/assets/images/new3.png" alt />
               <div class="new-product-text">
                 <div class="new-product-text">
-                  <p>Тирамису</p>
+                  <a href="#">
+                    Тирамису
+                    <img src="@/assets/icons/info.svg" alt />
+                  </a>
                   <a href="#" class="price">
                     <span>от</span>
                     <p>800</p>
@@ -148,7 +160,7 @@
       <div class="container">
         <div class="row">
           <div class="col-xl-9">
-            <div class="all-products" v-for="(item, index) in products" :key="index">
+            <div class="all-products" v-for="(item, index) in products" :key="index" :id="item.id">
               <div class="title-product">
                 <div class="title-category">
                   <h1>{{ item.title }}</h1>
@@ -180,10 +192,11 @@
               </div>
               <div class="products row">
                 <Product
-                  v-for="product in item.productsContent"
-                  :key="product.titles"
+                  v-for="(product, index) in item.productsContent"
+                  :key="index"
                   :product="product"
                   @activeModal="isActiveModal=true"
+                  @addBasket="addBasket(product)"
                 />
               </div>
             </div>
@@ -194,23 +207,23 @@
                 <div class="order-header">
                   <h3>
                     <img src="@/assets/icons/cart.svg" alt />Корзина
-                    <span class="basket-count">3</span>
+                    <span class="basket-count">{{ basket.length }}</span>
                   </h3>
-                  <span class="basket-delete">
+                  <span class="basket-delete" @click="clearBasket">
                     <img src="@/assets/icons/basket.svg" alt />
                   </span>
                 </div>
-                <div class="basket">
+                <div class="basket" v-for="(item, index) in basket" :key="index">
+                  <span class="delete-basket" @click="deleteBasketItem(index)">
+                    <img src="@/assets/icons/exit-basket.svg" alt />
+                  </span>
                   <div class="basket-top">
                     <div class="basket-img">
-                      <img src="@/assets/images/basket1.png" alt />
+                      <img :src="item.img" alt />
                     </div>
                     <div class="basket-deskr">
-                      <span class="delete-basket">
-                        <img src="@/assets/icons/exit-basket.svg" alt />
-                      </span>
-                      <b>Whoopie</b>
-                      <p class="silver-text">Круглый торт, состоит из 2 слоев бисквита...</p>
+                      <b>{{item.title}}</b>
+                      <p class="silver-text">{{ item.description }}</p>
                     </div>
                   </div>
                   <div class="product-count">
@@ -218,76 +231,21 @@
                       <span>
                         <i class="fas fa-minus"></i>
                       </span>
-                      <p>1</p>
+                      <p>{{item.count}}</p>
                       <span>
                         <i class="fas fa-plus"></i>
                       </span>
                     </div>
                     <div class="total-count">
-                      <h3>2700 ₸</h3>
-                    </div>
-                  </div>
-                </div>
-                <div class="basket">
-                  <div class="basket-top">
-                    <div class="basket-img">
-                      <img src="@/assets/images/basket2.png" alt />
-                    </div>
-                    <div class="basket-deskr">
-                      <span class="delete-basket">
-                        <img src="@/assets/icons/exit-basket.svg" alt />
-                      </span>
-                      <b>Мясной пирог</b>
-                      <p class="silver-text">Воздушный, пористые коржи с легким, нежным</p>
-                    </div>
-                  </div>
-                  <div class="product-count">
-                    <div class="count">
-                      <span>
-                        <i class="fas fa-minus"></i>
-                      </span>
-                      <p>1</p>
-                      <span>
-                        <i class="fas fa-plus"></i>
-                      </span>
-                    </div>
-                    <div class="total-count">
-                      <h3>5000 ₸</h3>
-                    </div>
-                  </div>
-                </div>
-                <div class="basket">
-                  <div class="basket-top">
-                    <div class="basket-img">
-                      <img src="@/assets/images/product3.png" alt />
-                    </div>
-                    <div class="basket-deskr">
-                      <span class="delete-basket">
-                        <img src="@/assets/icons/exit-basket.svg" alt />
-                      </span>
-                      <b>Мясной пирог</b>
-                      <p class="silver-text">Воздушный, пористые коржи с легким, нежным</p>
-                    </div>
-                  </div>
-                  <div class="product-count">
-                    <div class="count">
-                      <span>
-                        <i class="fas fa-minus"></i>
-                      </span>
-                      <p>1</p>
-                      <span>
-                        <i class="fas fa-plus"></i>
-                      </span>
-                    </div>
-                    <div class="total-count">
-                      <h3>3000 ₸</h3>
+                      <h3>{{item.price}}</h3>
                     </div>
                   </div>
                 </div>
                 <div class="basket-last">
-                  <p>
-                    <img src="@/assets/icons/delivery.svg" alt />Статус доставки
-                  </p>
+                  <router-link to="/OrderBasket">
+                      <img src="@/assets/icons/delivery.svg" alt />Статус доставки
+                  </router-link>
+
                   <div class="total-price">
                     <p>Сумма заказа</p>
                     <h3>2500₸</h3>
@@ -301,30 +259,37 @@
                   </span>
                 </div>
               </div>
-            </div>
-            <div class="history-orders">
-              <div class="order-header">
-                <h3>
-                  <img src="@/assets/icons/clock.svg" alt />История заказов
-                </h3>
+              <div class="history-orders">
+                <div class="order-header" @click="orderShow = !orderShow">
+                  <h3>
+                    <img src="@/assets/icons/clock.svg" alt />История заказов
+                    <img src="@/assets/icons/arrow-bottom.svg" alt="" :class="{ activeDropdown: orderShow}">
+                  </h3>
+                </div>
+                <div class="history-orders-content" v-if="orderShow">
+                  <p>14 июля 2020</p>
+                  <b>№ Almaty-3-51488</b>
+                  <div class="order-info">
+                    <b>Чизкейк New York</b>
+                    <p class="light-brown">Тонкое тесто, 35 см</p>
+                    <p><b>Медовый</b></p>
+                    <p class="light-brown">Тонкое тесто, 30 см</p>
+                  </div>
+                  <p class="blue-text">Подробнее</p>
+                  <button class="btn btn-outline-yellow">Повторить</button>
+                </div>
+                <div class="all-history">
+                  <a href="#" class="blue-text">Полная история</a>
+                </div>
               </div>
-              <div class="history-orders-content">
-                <p>14 июля 2020</p>
-                <b>№ Almaty-3-51488</b>
-                <p class="blue-text">Подробнее</p>
-                <button class="btn btn-outline-yellow">Повторить</button>
+              <div class="promocod">
+                <form action>
+                  <input type="text" name id class="input-text" placeholder="Введите промокод" />
+                  <button type="submit">
+                    <i class="fas fa-arrow-right"></i>
+                  </button>
+                </form>
               </div>
-              <div class="all-history">
-                <a href="#" class="blue-text">Полная история</a>
-              </div>
-            </div>
-            <div class="promocod">
-              <form action>
-                <input type="text" name id class="input-text" placeholder="Введите промокод" />
-                <button type="submit">
-                  <i class="fas fa-arrow-right"></i>
-                </button>
-              </form>
             </div>
           </div>
         </div>
@@ -345,7 +310,10 @@ export default {
     Vpopup
   },
   data: () => ({
+    orderShow: false,
     isActiveModal: false,
+    basket: [],
+    basketContent: {},
     setting: {
       nav: true,
       arrows: true,
@@ -361,6 +329,8 @@ export default {
     products: [
       {
         title: "Торты",
+        id: "1",
+
         ProductCategory: [
           "Сливочный",
           "Шоколадный",
@@ -373,10 +343,12 @@ export default {
         ],
         productsContent: [
           {
+            id: 1,
             count: 1,
             hit: require("@/assets/icons/hit.svg"),
             img: require("@/assets/images/product1.png"),
             titles: "Молочная девочка",
+            tooltipHit: "Хит",
             price: 4500,
             description:
               "Круглый торт, состоит из 2 слоев бисквита пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -393,17 +365,21 @@ export default {
             StorageConditions: "В холодильнике при температуре от +2 до +6 °С"
           },
           {
+            id: 2,
             count: 1,
             new: require("@/assets/icons/new.svg"),
             clock: require("@/assets/icons/time.svg"),
             img: require("@/assets/images/product2.png"),
             titles: "Whoopie",
+            tooltipNew: "Новинка",
+            tooltipClock: "Время",
             price: 4850,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
             Composition: "Ванильный сахар, Пшеничная мука, Крем безе, Банан."
           },
           {
+            id: 3,
             count: 1,
             img: require("@/assets/images/product3.png"),
             titles: "Медовый",
@@ -413,9 +389,11 @@ export default {
             Composition: "Ванильный сахар, Пшеничная мука, Крем безе, Банан."
           },
           {
+            id: 4,
             count: 1,
             img: require("@/assets/product-img/product4.png"),
             clean: require("@/assets/icons/green.svg"),
+            tooltipGreen: "Вегетарианский",
             titles: "Сникерс",
             price: 13700,
             description:
@@ -423,9 +401,11 @@ export default {
             Composition: "Ванильный сахар, Пшеничная мука, Крем безе, Банан."
           },
           {
+            id: 5,
             count: 1,
             img: require("@/assets/product-img/product5.png"),
             noMargarin: require("@/assets/icons/yellow.svg"),
+            tooltipYellow: "Без маргарина",
             titles: "Красный бархат",
             price: 2500,
             description:
@@ -437,6 +417,8 @@ export default {
             img: require("@/assets/product-img/product6.png"),
             noMargarin: require("@/assets/icons/yellow.svg"),
             clean: require("@/assets/icons/green.svg"),
+            tooltipYellow: "Без маргарина",
+            tooltipGreen: "Вегетарианский",
             titles: "Чизкейк New York",
             price: 2500,
             description:
@@ -501,6 +483,8 @@ export default {
       },
       {
         title: "Пироги",
+        id: "2",
+
         ProductCategory: [
           "С курицей",
           "Вегетрианский",
@@ -641,6 +625,7 @@ export default {
       },
       {
         title: "Выпечка",
+        id: "3",
         ProductCategory: [
           "С курицей",
           "Вегетрианский",
@@ -762,6 +747,7 @@ export default {
       },
       {
         title: "Пирожное",
+        id: "4",
         ProductCategory: [
           "С курицей",
           "Вегетрианский",
@@ -837,6 +823,7 @@ export default {
         ]
       },
       {
+        id: "5",
         title: "Печенье",
         ProductCategory: [
           "С курицей",
@@ -968,6 +955,7 @@ export default {
         ]
       },
       {
+        id: "6",
         title: "Полуфабрикаты",
         ProductCategory: [
           "С курицей",
@@ -1058,6 +1046,32 @@ export default {
     popupShow() {
       this.popup = true;
       console.log("popup");
+    },
+    addBasket(product) {
+      this.basket.push(
+        this.$set(this.basketContent, product.id, {
+          title: product.titles,
+          img: product.img,
+          count: product.count,
+          description: product.description,
+          price: product.price
+        })
+      );
+      // this.$set(this.basketContent, product.id, {
+      //   title: product.titles,
+      //   img: product.img,
+      //   count: product.count,
+      //   description: product.description,
+      //   totalPrice: product.totalPrice
+      // })
+      console.log(this.basket);
+    },
+    deleteBasketItem(index) {
+      console.log(index);
+      this.basket.splice(index, 1);
+    },
+    clearBasket() {
+      this.basket = [];
     }
   }
 };

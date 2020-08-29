@@ -1,6 +1,7 @@
-// body {
-//     background-color: #EEFDFF;
-// }
+html {
+    scroll-behavior: smooth;
+}
+
 .container {
     padding: 0;
 }
@@ -308,6 +309,11 @@
                 position: absolute;
                 right: -30px;
                 border-radius: 50%;
+            }
+            &:last-child {
+                &::after {
+                    display: none;
+                }
             }
             a {
                 color: $brown-text;

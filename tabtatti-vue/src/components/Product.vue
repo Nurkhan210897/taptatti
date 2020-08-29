@@ -2,30 +2,53 @@
   <div class="col-xl-4">
     <div class="product">
       <div class="product-features">
-        <span v-if="product.hit">
+        <span v-if="product.hit" @mouseenter="tooltipHit=!false" @mouseleave="tooltipHit = false">
           <img :src="product.hit" alt />
+          <div class="tooltip-product" v-if="tooltipHit">
+            <p>{{ product.tooltipHit }}</p>
+          </div>
         </span>
-        <span v-if="product.new">
+        <span v-if="product.new" @mouseenter="tooltipNew=!false" @mouseleave="tooltipNew = false">
           <img :src="product.new" alt />
+          <div class="tooltip-product" v-if="tooltipNew">
+            <p>{{ product.tooltipNew }}</p>
+          </div>
         </span>
-        <span v-if="product.clock">
+        <span
+          v-if="product.clock"
+          @mouseenter="tooltipClock=!false"
+          @mouseleave="tooltipClock = false"
+        >
           <img :src="product.clock" alt />
+          <div class="tooltip-product" v-if="tooltipClock">
+            <p>{{ product.tooltipClock }}</p>
+          </div>
         </span>
-        <span v-if="product.clean">
+        <span v-if="product.clean" @mouseenter="showclean=!false" @mouseleave="showclean = false">
           <img :src="product.clean" alt />
+          <div class="tooltip-product" v-if="showclean">
+            <p>{{ product.tooltipGreen }}</p>
+          </div>
         </span>
-        <span v-if="product.noMargarin">
+        <span
+          v-if="product.noMargarin"
+          @mouseenter="shownoMargarin=!false"
+          @mouseleave="shownoMargarin = false"
+        >
           <img :src="product.noMargarin" alt />
+          <div class="tooltip-product" v-if="shownoMargarin">
+            <p>{{ product.tooltipYellow }}</p>
+          </div>
         </span>
       </div>
-      <div  @click="showModal" class="show-modal">
-        <div class="products-img" >
-        <img :src="product.img" alt />
-      </div>
-      <div class="titles">
-        <p>{{product.titles}}</p>
-        <img src="@/assets/icons/info.svg" alt="">
-      </div>
+      <div @click="showModal" class="show-modal">
+        <div class="products-img">
+          <img :src="product.img" alt />
+        </div>
+        <div class="titles">
+          <p>{{product.titles}}</p>
+          <img src="@/assets/icons/info.svg" alt />
+        </div>
       </div>
       <div class="product-count">
         <div class="count">
@@ -144,10 +167,17 @@
                   <div class="input-reg">
                     <input
                       type="text"
-                      placeholder="Введите надпись для оформление торта! "
+                      placeholder="Введите надпись"
                       class="input-text"
+                      v-model.trim="name"
+                      :class="{invalid: ($v.testName.$dirty && !$v.name.required)}"
                     />
-                    <button type="submit" class="brown-btn">
+                    />
+                    <button
+                      type="submit"
+                      class="brown-btn"
+                      @click.prevent="checkTest"
+                    >
                       <i class="fas fa-check"></i>Проверить текст
                     </button>
                   </div>
@@ -155,40 +185,20 @@
                     <span class="red-text">Внимание!</span> Учтите раскладку клавиатуры. Как вы написали, так и будет изготовлено.
                   </label>
                 </form>
-                <div class="order-modal-bottom">
-                  <ul>
-                    <li>
-                      <p>Стоимость добавление надписи:</p>
-                      <span>500 ₸</span>
-                    </li>
-                    <li>
-                      <p>Оформление по фото/мастикой:</p>
-                      <span>1500 ₸</span>
-                    </li>
-                    <li>
-                      <p>Сумма заказа:</p>
-                      <span>2500 ₸</span>
-                    </li>
-                  </ul>
-                  <div class="hard-bottom">
-                    <div>
-                      <img src="@/assets/icons/icon-order.svg" alt />
-                      <a href="#" class="blue-text">Оформить по-своему</a>
-                    </div>
-                    <div>
-                      <button type="button" class="brown-btn">Выбрать оформление</button>
-                      <button type="button" class="btn-outline">Назад</button>
-                    </div>
-                  </div>
-                </div>
               </div>
               <div class="inscription" v-show="category.inscription">
                 <form action>
                   <div class="inscription-text">
                     <label for>Надпись на торте (максимум 15 букв)</label>
                     <div class="input-reg">
-                      <input type="text" placeholder="Введите надпись" class="input-text" />
-                      <button type="submit" class="brown-btn">
+                      <input
+                        type="text"
+                        placeholder="Введите надпись"
+                        class="input-text"
+                        v-model.trim="name"
+                        :class="{invalid: ($v.testName.$dirty && !$v.name.required)}"
+                      />
+                      <button type="submit" class="brown-btn" @click.prevent="checkTest">
                         <i class="fas fa-check"></i>Проверить текст
                       </button>
                     </div>
@@ -196,33 +206,39 @@
                       <span class="red-text">Внимание!</span> Учтите раскладку клавиатуры. Как вы написали, так и будет изготовлено.
                     </label>
                   </div>
-                  <label for>Надпись на торте (максимум 15 букв)</label>
-                  <input type="text" placeholder="Ваши пожелания" class="input-text" />
                 </form>
-                <div class="order-modal-bottom">
-                  <ul>
-                    <li>
-                      <p>Стоимость добавление надписи:</p>
-                      <span>500 ₸</span>
-                    </li>
-                    <li>
-                      <p>Оформление по фото/мастикой:</p>
-                      <span>1500 ₸</span>
-                    </li>
-                    <li>
-                      <p>Сумма заказа:</p>
-                      <span>2500 ₸</span>
-                    </li>
-                  </ul>
-                  <div class="hard-bottom">
-                    <div>
-                      <img src="@/assets/icons/icon-order.svg" alt />
-                      <a href="#" class="blue-text">Оформить по-своему</a>
-                    </div>
-                    <div>
-                      <button type="button" class="brown-btn">Выбрать оформление</button>
-                      <button type="button" class="btn-outline">Назад</button>
-                    </div>
+              </div>
+              <div class="order-modal-bottom" v-if="!category.hard">
+                <ul>
+                  <li>
+                    <p>Стоимость добавление надписи:</p>
+                    <span>500 ₸</span>
+                  </li>
+                  <!-- <li>
+                    <p>Оформление по фото/мастикой:</p>
+                    <span>1500 ₸</span>
+                  </li>-->
+                  <li>
+                    <p>Сумма заказа:</p>
+                    <span>2500 ₸</span>
+                  </li>
+                </ul>
+                <div class="hard-bottom">
+                  <div>
+                    <img src="@/assets/icons/icon-order.svg" alt />
+                    <a
+                      href="#"
+                      class="blue-text"
+                      @click.prevent="categoryBtn('hard')"
+                    >Оформить по-своему</a>
+                  </div>
+                  <div>
+                    <button type="button" class="brown-btn">Выбрать оформление</button>
+                    <button
+                      type="button"
+                      class="btn-outline"
+                      @click.prevent="cakeModal = !cakeModal"
+                    >Назад</button>
                   </div>
                 </div>
               </div>
@@ -254,7 +270,11 @@
                 </div>
                 <div class="hard-bottom">
                   <button type="button" class="brown-btn">Выбрать оформление</button>
-                  <button type="button" class="btn-outline">Назад</button>
+                  <button
+                    type="button"
+                    class="btn-outline"
+                    @click.prevent="cakeModal = !cakeModal"
+                  >Назад</button>
                 </div>
               </div>
             </div>
@@ -265,9 +285,55 @@
             <div class="modal-left">
               <div class="modal-top">
                 <div class="modal-top-right">
-                  <span class="new">Новинка</span>
-                  <span class="clock-icon">
-                    <img src="@/assets/icons/clock-white.svg" alt />
+                  <span
+                    v-if="product.hit"
+                    @mouseenter="tooltipHit=!false"
+                    @mouseleave="tooltipHit = false"
+                  >
+                    <img :src="product.hit" alt />
+                    <div class="tooltip-product" v-if="tooltipHit">
+                      <p>{{ product.tooltipHit }}</p>
+                    </div>
+                  </span>
+                  <span
+                    v-if="product.new"
+                    @mouseenter="tooltipNew=!false"
+                    @mouseleave="tooltipNew = false"
+                  >
+                    <img :src="product.new" alt />
+                    <div class="tooltip-product" v-if="tooltipNew">
+                      <p>{{ product.tooltipNew }}</p>
+                    </div>
+                  </span>
+                  <span
+                    v-if="product.clock"
+                    @mouseenter="tooltipClock=!false"
+                    @mouseleave="tooltipClock = false"
+                  >
+                    <img :src="product.clock" alt />
+                    <div class="tooltip-product" v-if="tooltipClock">
+                      <p>{{ product.tooltipClock }}</p>
+                    </div>
+                  </span>
+                  <span
+                    v-if="product.clean"
+                    @mouseenter="showclean=!false"
+                    @mouseleave="showclean = false"
+                  >
+                    <img :src="product.clean" alt />
+                    <div class="tooltip-product" v-if="showclean">
+                      <p>{{ product.tooltipGreen }}</p>
+                    </div>
+                  </span>
+                  <span
+                    v-if="product.noMargarin"
+                    @mouseenter="shownoMargarin=!false"
+                    @mouseleave="shownoMargarin = false"
+                  >
+                    <img :src="product.noMargarin" alt />
+                    <div class="tooltip-product" v-if="shownoMargarin">
+                      <p>{{ product.tooltipYellow }}</p>
+                    </div>
                   </span>
                 </div>
                 <button class="btn btn-outline-blue" @click="cakeModal = !cakeModal">
@@ -398,8 +464,8 @@
                 </div>
               </div>
               <div class="button-modal">
-                <button class="btn brown-btn ">Купить сразу</button>
-                <button class="btn brown-btn ">Добавить в корзину</button>
+                <button class="btn btn-outline">Купить сразу</button>
+                <button class="btn brown-btn" @click="addBasket">Добавить в корзину</button>
               </div>
               <div class="reviews-header">
                 <div class="reviews-top">
@@ -407,39 +473,137 @@
                     Отзывы
                     <span>3</span>
                   </p>
-                  <button class="btn blue-bg">Написать</button>
+                  <button class="btn blue-bg" @click="reviewModal = true">Написать</button>
                 </div>
-                <img src="@/assets/icons/stars.svg" alt />
+                <div class="star" data-total-value="0">
+                  <input type="radio" name="star" id="star1" class="star-item" />
+                  <label for="star1"></label>
+                  <input type="radio" name="star" id="star2" class="star-item" />
+                  <label for="star2"></label>
+                  <input type="radio" name="star" id="star3" class="star-item" />
+                  <label for="star3"></label>
+                  <input type="radio" name="star" id="star4" class="star-item" />
+                  <label for="star4"></label>
+                  <input type="radio" name="star" id="star5" class="star-item" />
+                  <label for="star5"></label>
+                  <!-- <div class="star-item" data-item-value="5">★</div>
+                  <div class="star-item" data-item-value="4">★</div>
+                  <div class="star-item" data-item-value="3">★</div>
+                  <div class="star-item" data-item-value="2">★</div>
+                  <div class="star-item" data-item-value="1">★</div>-->
+                </div>
               </div>
-              <div class="reviews-content">
+              <div class="reviews">
                 <div class="reviews-text">
                   <b>Макпал</b>
                   <p>Очень вкусный торт! Советую всем!</p>
                 </div>
-                <span class="star">
-                  <img src="@/assets/icons/stars.svg" alt />
-                </span>
-              </div>
-              <div class="reviews-content">
-                <div class="reviews-text">
-                  <b>Макпал</b>
-                  <p>Очень вкусный торт! Советую всем!</p>
+                <div class="star" data-total-value="0">
+                  <input type="radio" name="star" id="star1" class="star-item" />
+                  <label for="star1"></label>
+                  <input type="radio" name="star" id="star2" class="star-item" />
+                  <label for="star2"></label>
+                  <input type="radio" name="star" id="star3" class="star-item" />
+                  <label for="star3"></label>
+                  <input type="radio" name="star" id="star4" class="star-item" />
+                  <label for="star4"></label>
+                  <input type="radio" name="star" id="star5" class="star-item" />
+                  <label for="star5"></label>
                 </div>
-                <span class="star">
-                  <img src="@/assets/icons/stars.svg" alt />
-                </span>
               </div>
-              <div class="reviews-content">
+              <div class="reviews" v-for="item in reviewsContent" :key="item.name">
                 <div class="reviews-text">
-                  <b>Денис</b>
-                  <p>Кажется слишком сладко, но в целом круто...</p>
+                  <b>{{ item.name }}</b>
+                  <p>{{ item.review }}</p>
                 </div>
-                <span class="star">
-                  <img src="@/assets/icons/stars.svg" alt />
-                </span>
+                <div class="star">
+                  <div>★</div>
+                  <div>★</div>
+                  <div>★</div>
+                  <div>★</div>
+                  <div>★</div>
+                </div>
               </div>
             </div>
           </div>
+
+          <transition name="fade">
+            <div class="review-modal" v-if="reviewModal">
+              <div class="row">
+                <div class="col-xl-5 pr-0">
+                  <div class="review-modal-img">
+                    <img src="@/assets/images/review-img.png" alt />
+                  </div>
+                </div>
+                <div class="col-xl-7">
+                  <div class="reviews-content">
+                    <div class="prev-link">
+                      <img src="@/assets/icons/prev-product.svg" alt />
+                      <a href="#" @click.prevent="reviewModal = !reviewModal">Назад</a>
+                    </div>
+                    <div class="write-review">
+                      <h3>Написать отзыв</h3>
+                      <form action>
+                        <input
+                          type="text"
+                          name
+                          id
+                          placeholder="Ваше имя"
+                          v-model.trim="name"
+                          :class="{invalid: ($v.name.$dirty && !$v.name.required)}"
+                        />
+                        <span
+                          v-if="$v.name.$dirty && !$v.name.required"
+                          class="error-text invalid"
+                        >* Вы не написали имя</span>
+                        <div class="choose-star">
+                          <div class="star" data-total-value="3">
+                            <div class="star-item" data-item-value="5">★</div>
+                            <div class="star-item" data-item-value="4">★</div>
+                            <div class="star-item" data-item-value="3">★</div>
+                            <div class="star-item" data-item-value="2">★</div>
+                            <div class="star-item" data-item-value="1">★</div>
+                          </div>
+                          <p class="silver-text">Выберите кол-во звёзд</p>
+                        </div>
+                        <textarea
+                          name
+                          id
+                          cols="30"
+                          rows="3"
+                          placeholder="Ваш отзыв"
+                          v-model="review"
+                          :class="{invalid: ($v.name.$dirty && !$v.review.required)}"
+                        ></textarea>
+                        <span
+                          v-if="$v.name.$dirty && !$v.review.required"
+                          class="error-text invalid"
+                        >* Вы не написали имя</span>
+                        <button
+                          type="submit"
+                          class="btn brown-btn"
+                          @click.prevent="addReview"
+                        >Отправить</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </transition>
+          <transition name="fade">
+            <div class="reviews-success" v-if="reviewSuccess">
+              <div class="prev-link">
+                <img src="@/assets/icons/prev-product.svg" alt />
+                <a href="#" @click.prevent="reviewSuccess = !reviewSuccess">Назад</a>
+              </div>
+              <div class="reviews-success-text">
+                <img src="@/assets/icons/star-thank.svg" alt />
+                <b>Спасибо!</b>
+                <p>Ваш отзыв вскоре будет опубликован.</p>
+              </div>
+            </div>
+          </transition>
         </div>
       </Vpopup>
     </transition>
@@ -449,6 +613,12 @@
 
 
 <script>
+import {
+  required,
+  minLength,
+  userName,
+  password
+} from "vuelidate/lib/validators";
 import { VueperSlides, VueperSlide } from "vueperslides";
 import "vueperslides/dist/vueperslides.css";
 import Vpopup from "./V-popup.vue";
@@ -462,8 +632,20 @@ export default {
     product: Object
   },
   data: () => ({
+    name: "",
+    review: "",
+    testName: "",
+    password: "",
+    reviewSuccess: false,
+    reviewsContent: [],
+    reviewModal: false,
+    showclean: false,
+    shownoMargarin: false,
     popup: false,
     cakeModal: false,
+    tooltipHit: false,
+    tooltipClock: false,
+    tooltipNew: false,
     category: {
       inscription: false,
       withRegistration: true,
@@ -488,12 +670,24 @@ export default {
       }
     ]
   }),
+  validations: {
+    name: { required },
+    review: { required },
+    password: { required, minLength: minLength(6) }
+    // userName: {
+    //   required,
+    //   testName: { required, minLength: minLength(6) }
+    // }
+  },
   computed: {
     totalPrice() {
       return this.product.count * this.product.price;
     }
   },
   methods: {
+    addBasket() {
+      this.$emit("addBasket");
+    },
     categoryBtn(item) {
       for (let i in this.category) {
         if (i == item) {
@@ -517,6 +711,30 @@ export default {
     showModal() {
       this.popup = !this.popup;
       this.$emit("activeModal");
+    },
+    addReview() {
+      if (this.$v.$invalid) {
+        this.$v.$touch();
+        return;
+      }
+      if (this.name != "") {
+        this.reviewsContent.push({
+          name: this.name,
+          review: this.review
+        });
+      }
+      if (this.name != "") {
+        this.reviewSuccess = true;
+        this.reviewModal = false;
+      }
+      this.name = "";
+      this.review = "";
+    },
+    checkTest() {
+      if (this.$v.$invalid) {
+        this.$v.$touch();
+        return;
+      }
     }
   }
 };

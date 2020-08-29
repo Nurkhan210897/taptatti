@@ -1,5 +1,5 @@
 <template>
-  <div class="popup-wrapper" ref="popup-wrapper">
+  <div class="popup-wrapper">
     <div class="modal-product">
       <span class="exit" @click="exitPopup">
         <i class="fas fa-times"></i>
@@ -21,12 +21,12 @@ export default {
     }
   },
   mounted() {
-    let vm = this;
-    document.addEventListener("click", function(e) {
-      if (e.target === vm.$refs["popup-wrapper"]) {
-        vm.exitPopup() 
-      }
-    });
+    // let vm = this;
+    // document.addEventListener("click", function(e) {
+    //   if (e.target === vm.$refs["popup-wrapper"]) {
+    //     vm.exitPopup() 
+    //   }
+    // });
   }
 };
 </script>

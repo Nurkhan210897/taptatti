@@ -159,7 +159,7 @@
                 <v-select :options="options" label="value" :clearable="false" v-model="selectCity"></v-select>
               </li>
               <li class="lang-select">
-                <v-select :options="lang" label="value" :clearable="false" v-model="selectLang"></v-select>
+                <v-select :options="lang" label="value" :clearable="false"></v-select>
               </li>
             </ul>
             <div class="title-link">
@@ -200,22 +200,22 @@
         <div class="bottom-nav-content">
           <ul>
             <li>
-              <a href="#">Торты</a>
+              <a href="#1">Торты</a>
             </li>
             <li>
-              <a href="#">Пироги</a>
+              <a href="#2">Пироги</a>
             </li>
             <li>
-              <a href="#">Выпечка</a>
+              <a href="#3">Выпечка</a>
             </li>
             <li>
-              <a href="#">Пирожное</a>
+              <a href="#4">Пирожное</a>
             </li>
             <li>
-              <a href="#">Печенье</a>
+              <a href="#5">Печенье</a>
             </li>
             <li>
-              <a href="#">Полуфабрикаты</a>
+              <a href="#6">Полуфабрикаты</a>
             </li>
           </ul>
           <div class="call">
