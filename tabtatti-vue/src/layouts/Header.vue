@@ -98,7 +98,7 @@
                     <div class="dropdown-menu" v-show="showDropdown">
                       <ul>
                         <li>
-                          <img src="@/assets/icons/profile.svg" alt @click="profile = !profile" />
+                          <img src="@/assets/icons/profile.svg" alt />
                           <a href="#">Профиль</a>
                         </li>
                         <li>

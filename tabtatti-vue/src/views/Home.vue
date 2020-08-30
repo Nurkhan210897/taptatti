@@ -207,13 +207,13 @@
                 <div class="order-header">
                   <h3>
                     <img src="@/assets/icons/cart.svg" alt />Корзина
-                    <span class="basket-count">{{ basket.length }}</span>
+                    <span class="basket-count">{{ basketContent.length }}</span>
                   </h3>
                   <span class="basket-delete" @click="clearBasket">
                     <img src="@/assets/icons/basket.svg" alt />
                   </span>
                 </div>
-                <div class="basket" v-for="(item, index) in basket" :key="index">
+                <div class="basket" v-for="(item, index) in basketContent" :key="index">
                   <span class="delete-basket" @click="deleteBasketItem(index)">
                     <img src="@/assets/icons/exit-basket.svg" alt />
                   </span>
@@ -243,7 +243,7 @@
                 </div>
                 <div class="basket-last">
                   <router-link to="/OrderBasket">
-                      <img src="@/assets/icons/delivery.svg" alt />Статус доставки
+                    <img src="@/assets/icons/delivery.svg" alt />Статус доставки
                   </router-link>
 
                   <div class="total-price">
@@ -263,7 +263,11 @@
                 <div class="order-header" @click="orderShow = !orderShow">
                   <h3>
                     <img src="@/assets/icons/clock.svg" alt />История заказов
-                    <img src="@/assets/icons/arrow-bottom.svg" alt="" :class="{ activeDropdown: orderShow}">
+                    <img
+                      src="@/assets/icons/arrow-bottom.svg"
+                      alt
+                      :class="{ activeDropdown: orderShow}"
+                    />
                   </h3>
                 </div>
                 <div class="history-orders-content" v-if="orderShow">
@@ -272,7 +276,9 @@
                   <div class="order-info">
                     <b>Чизкейк New York</b>
                     <p class="light-brown">Тонкое тесто, 35 см</p>
-                    <p><b>Медовый</b></p>
+                    <p>
+                      <b>Медовый</b>
+                    </p>
                     <p class="light-brown">Тонкое тесто, 30 см</p>
                   </div>
                   <p class="blue-text">Подробнее</p>
@@ -347,7 +353,7 @@ export default {
             count: 1,
             hit: require("@/assets/icons/hit.svg"),
             img: require("@/assets/images/product1.png"),
-            titles: "Молочная девочка",
+            title: "Молочная девочка",
             tooltipHit: "Хит",
             price: 4500,
             description:
@@ -370,7 +376,7 @@ export default {
             new: require("@/assets/icons/new.svg"),
             clock: require("@/assets/icons/time.svg"),
             img: require("@/assets/images/product2.png"),
-            titles: "Whoopie",
+            title: "Whoopie",
             tooltipNew: "Новинка",
             tooltipClock: "Время",
             price: 4850,
@@ -382,7 +388,7 @@ export default {
             id: 3,
             count: 1,
             img: require("@/assets/images/product3.png"),
-            titles: "Медовый",
+            title: "Медовый",
             price: 3000,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -394,7 +400,7 @@ export default {
             img: require("@/assets/product-img/product4.png"),
             clean: require("@/assets/icons/green.svg"),
             tooltipGreen: "Вегетарианский",
-            titles: "Сникерс",
+            title: "Сникерс",
             price: 13700,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -406,7 +412,7 @@ export default {
             img: require("@/assets/product-img/product5.png"),
             noMargarin: require("@/assets/icons/yellow.svg"),
             tooltipYellow: "Без маргарина",
-            titles: "Красный бархат",
+            title: "Красный бархат",
             price: 2500,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -419,7 +425,7 @@ export default {
             clean: require("@/assets/icons/green.svg"),
             tooltipYellow: "Без маргарина",
             tooltipGreen: "Вегетарианский",
-            titles: "Чизкейк New York",
+            title: "Чизкейк New York",
             price: 2500,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -428,7 +434,7 @@ export default {
           {
             count: 1,
             img: require("@/assets/product-img/product7.png"),
-            titles: "Шпинатный",
+            title: "Шпинатный",
             price: 13700,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -437,7 +443,7 @@ export default {
           {
             count: 1,
             img: require("@/assets/product-img/product8.png"),
-            titles: "Морковный",
+            title: "Морковный",
             price: 2500,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -446,7 +452,7 @@ export default {
           {
             count: 1,
             img: require("@/assets/product-img/product9.png"),
-            titles: "Тирамису",
+            title: "Тирамису",
             price: 1800,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -455,7 +461,7 @@ export default {
           {
             count: 1,
             img: require("@/assets/product-img/product10.png"),
-            titles: "Тирамису Фундук",
+            title: "Тирамису Фундук",
             price: 2500,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -464,7 +470,7 @@ export default {
           {
             count: 1,
             img: require("@/assets/product-img/product11.png"),
-            titles: "Тирамису Шоколад",
+            title: "Тирамису Шоколад",
             price: 2500,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -473,7 +479,7 @@ export default {
           {
             count: 1,
             img: require("@/assets/product-img/product12.png"),
-            titles: "Тирамису Апельсин",
+            title: "Тирамису Апельсин",
             price: 1800,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -500,7 +506,7 @@ export default {
             count: 1,
             hit: require("@/assets/icons/hit.svg"),
             img: require("@/assets/product-img/product13.png"),
-            titles: "Фруктовый (большой)",
+            title: "Фруктовый (большой)",
             price: 13700,
             description:
               "Круглый торт, состоит из 2 слоев бисквита пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -521,7 +527,7 @@ export default {
             new: require("@/assets/icons/new.svg"),
             clock: require("@/assets/icons/time.svg"),
             img: require("@/assets/product-img/product14.png"),
-            titles: "Фруктовый (маленький)",
+            title: "Фруктовый (маленький)",
             price: 2500,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -530,7 +536,7 @@ export default {
           {
             count: 1,
             img: require("@/assets/product-img/product15.png"),
-            titles: "Пирамида",
+            title: "Пирамида",
             price: 1800,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -540,7 +546,7 @@ export default {
             count: 1,
             img: require("@/assets/product-img/product16.png"),
             clean: require("@/assets/icons/green.svg"),
-            titles: "Финский яблочный",
+            title: "Финский яблочный",
             price: 13700,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -550,7 +556,7 @@ export default {
             count: 1,
             img: require("@/assets/product-img/product17.png"),
             noMargarin: require("@/assets/icons/yellow.svg"),
-            titles: "Яблочный",
+            title: "Яблочный",
             price: 2500,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -561,7 +567,7 @@ export default {
             img: require("@/assets/product-img/product18.png"),
             noMargarin: require("@/assets/icons/yellow.svg"),
             clean: require("@/assets/icons/green.svg"),
-            titles: "Творожный (большой)",
+            title: "Творожный (большой)",
             price: 1800,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -570,7 +576,7 @@ export default {
           {
             count: 1,
             img: require("@/assets/product-img/product18.png"),
-            titles: "Творожный (средний)",
+            title: "Творожный (средний)",
             price: 13700,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -579,7 +585,7 @@ export default {
           {
             count: 1,
             img: require("@/assets/product-img/product20.png"),
-            titles: "Творожный (маленький)",
+            title: "Творожный (маленький)",
             price: 2500,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -588,7 +594,7 @@ export default {
           {
             count: 1,
             img: require("@/assets/product-img/product21.png"),
-            titles: "Зебра ",
+            title: "Зебра ",
             price: 1800,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -597,7 +603,7 @@ export default {
           {
             count: 1,
             img: require("@/assets/product-img/product22.png"),
-            titles: "Мясной (говядина)",
+            title: "Мясной (говядина)",
             price: 13700,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -606,7 +612,7 @@ export default {
           {
             count: 1,
             img: require("@/assets/product-img/product22.png"),
-            titles: "Мясной (курица)",
+            title: "Мясной (курица)",
             price: 2500,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -615,7 +621,7 @@ export default {
           {
             count: 1,
             img: require("@/assets/product-img/product23.png"),
-            titles: "Слоеный пирог (с мясом)",
+            title: "Слоеный пирог (с мясом)",
             price: 1800,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -641,7 +647,7 @@ export default {
             count: 1,
             hit: require("@/assets/icons/hit.svg"),
             img: require("@/assets/product-img/product24.png"),
-            titles: "Самса с мясом",
+            title: "Самса с мясом",
             price: 13700,
             description:
               "Круглый торт, состоит из 2 слоев бисквита пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -662,7 +668,7 @@ export default {
             new: require("@/assets/icons/new.svg"),
             clock: require("@/assets/icons/time.svg"),
             img: require("@/assets/product-img/product25.png"),
-            titles: "Самса с курицей",
+            title: "Самса с курицей",
             price: 2500,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -671,7 +677,7 @@ export default {
           {
             count: 1,
             img: require("@/assets/product-img/product26.png"),
-            titles: "Борек с мясом",
+            title: "Борек с мясом",
             price: 1800,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -681,7 +687,7 @@ export default {
             count: 1,
             img: require("@/assets/product-img/product27.png"),
             noMargarin: require("@/assets/icons/yellow.svg"),
-            titles: "Борек с картошкой",
+            title: "Борек с картошкой",
             price: 2500,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -692,7 +698,7 @@ export default {
             img: require("@/assets/product-img/product28.png"),
             noMargarin: require("@/assets/icons/yellow.svg"),
             clean: require("@/assets/icons/green.svg"),
-            titles: "Кекс мясной",
+            title: "Кекс мясной",
             price: 1800,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -701,7 +707,7 @@ export default {
           {
             count: 1,
             img: require("@/assets/product-img/product29.png"),
-            titles: "Токаш с картошкой",
+            title: "Токаш с картошкой",
             price: 13700,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -710,7 +716,7 @@ export default {
           {
             count: 1,
             img: require("@/assets/product-img/product30.png"),
-            titles: "Токаш с капустой",
+            title: "Токаш с капустой",
             price: 2500,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -719,7 +725,7 @@ export default {
           {
             count: 1,
             img: require("@/assets/product-img/product31.png"),
-            titles: "Токаш с сыром ",
+            title: "Токаш с сыром ",
             price: 1800,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -728,7 +734,7 @@ export default {
           {
             count: 1,
             img: require("@/assets/product-img/product32.png"),
-            titles: "Булочки ",
+            title: "Булочки ",
             price: 1800,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -737,7 +743,7 @@ export default {
           {
             count: 1,
             img: require("@/assets/product-img/product33.png"),
-            titles: "Бауырсаки",
+            title: "Бауырсаки",
             price: 1800,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -763,7 +769,7 @@ export default {
             count: 1,
             hit: require("@/assets/icons/hit.svg"),
             img: require("@/assets/product-img/product34.png"),
-            titles: "Капкейк",
+            title: "Капкейк",
             price: 13700,
             description:
               "Круглый торт, состоит из 2 слоев бисквита пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -784,7 +790,7 @@ export default {
             new: require("@/assets/icons/new.svg"),
             clock: require("@/assets/icons/time.svg"),
             img: require("@/assets/product-img/product35.png"),
-            titles: "Картошка",
+            title: "Картошка",
             price: 2500,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -793,7 +799,7 @@ export default {
           {
             count: 1,
             img: require("@/assets/product-img/product36.png"),
-            titles: "Красный бархат",
+            title: "Красный бархат",
             price: 1800,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -803,7 +809,7 @@ export default {
             count: 1,
             img: require("@/assets/product-img/product37.png"),
             noMargarin: require("@/assets/icons/yellow.svg"),
-            titles: "Фруктовая корзина",
+            title: "Фруктовая корзина",
             price: 2500,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -814,7 +820,7 @@ export default {
             img: require("@/assets/product-img/product38.png"),
             noMargarin: require("@/assets/icons/yellow.svg"),
             clean: require("@/assets/icons/green.svg"),
-            titles: "Фруктовая корзина 2",
+            title: "Фруктовая корзина 2",
             price: 1800,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -840,7 +846,7 @@ export default {
             count: 1,
             hit: require("@/assets/icons/hit.svg"),
             img: require("@/assets/product-img/product39.png"),
-            titles: "Whoopie",
+            title: "Whoopie",
             price: 13700,
             description:
               "Круглый торт, состоит из 2 слоев бисквита пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -861,7 +867,7 @@ export default {
             new: require("@/assets/icons/new.svg"),
             clock: require("@/assets/icons/time.svg"),
             img: require("@/assets/product-img/product40.png"),
-            titles: "Шоколадные",
+            title: "Шоколадные",
             price: 2500,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -870,7 +876,7 @@ export default {
           {
             count: 1,
             img: require("@/assets/product-img/product41.png"),
-            titles: "Финики с орехами",
+            title: "Финики с орехами",
             price: 1800,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -880,7 +886,7 @@ export default {
             count: 1,
             img: require("@/assets/product-img/product42.png"),
             noMargarin: require("@/assets/icons/yellow.svg"),
-            titles: "Творожные",
+            title: "Творожные",
             price: 2500,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -891,7 +897,7 @@ export default {
             img: require("@/assets/product-img/product43.png"),
             noMargarin: require("@/assets/icons/yellow.svg"),
             clean: require("@/assets/icons/green.svg"),
-            titles: "Алагул",
+            title: "Алагул",
             price: 1800,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -902,7 +908,7 @@ export default {
             img: require("@/assets/product-img/product44.png"),
             noMargarin: require("@/assets/icons/yellow.svg"),
             clean: require("@/assets/icons/green.svg"),
-            titles: "Лимонные",
+            title: "Лимонные",
             price: 1800,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -913,7 +919,7 @@ export default {
             img: require("@/assets/product-img/product45.png"),
             noMargarin: require("@/assets/icons/yellow.svg"),
             clean: require("@/assets/icons/green.svg"),
-            titles: "Ун курабие",
+            title: "Ун курабие",
             price: 1800,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -924,7 +930,7 @@ export default {
             img: require("@/assets/product-img/product46.png"),
             noMargarin: require("@/assets/icons/yellow.svg"),
             clean: require("@/assets/icons/green.svg"),
-            titles: "Кунжутное",
+            title: "Кунжутное",
             price: 1800,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -935,7 +941,7 @@ export default {
             img: require("@/assets/product-img/product47.png"),
             noMargarin: require("@/assets/icons/yellow.svg"),
             clean: require("@/assets/icons/green.svg"),
-            titles: "Курага с орехами",
+            title: "Курага с орехами",
             price: 1800,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -946,7 +952,7 @@ export default {
             img: require("@/assets/product-img/product48.png"),
             noMargarin: require("@/assets/icons/yellow.svg"),
             clean: require("@/assets/icons/green.svg"),
-            titles: "Рогалик сыр с картошкой",
+            title: "Рогалик сыр с картошкой",
             price: 1800,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -972,7 +978,7 @@ export default {
             count: 1,
             hit: require("@/assets/icons/hit.svg"),
             img: require("@/assets/product-img/product49.png"),
-            titles: "Whoopie",
+            title: "Whoopie",
             price: 13700,
             description:
               "Круглый торт, состоит из 2 слоев бисквита пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -993,7 +999,7 @@ export default {
             new: require("@/assets/icons/new.svg"),
             clock: require("@/assets/icons/time.svg"),
             img: require("@/assets/product-img/product49.png"),
-            titles: "Шоколадные",
+            title: "Шоколадные",
             price: 2500,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -1002,7 +1008,7 @@ export default {
           {
             count: 1,
             img: require("@/assets/product-img/product49.png"),
-            titles: "Финики с орехами",
+            title: "Финики с орехами",
             price: 1800,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -1012,7 +1018,7 @@ export default {
             count: 1,
             img: require("@/assets/product-img/product50.png"),
             noMargarin: require("@/assets/icons/yellow.svg"),
-            titles: "Творожные",
+            title: "Творожные",
             price: 2500,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -1022,7 +1028,7 @@ export default {
             count: 1,
             img: require("@/assets/product-img/product50.png"),
             noMargarin: require("@/assets/icons/yellow.svg"),
-            titles: "Творожные",
+            title: "Творожные",
             price: 2500,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -1032,7 +1038,7 @@ export default {
             count: 1,
             img: require("@/assets/product-img/product51.png"),
             noMargarin: require("@/assets/icons/yellow.svg"),
-            titles: "Творожные",
+            title: "Творожные",
             price: 2500,
             description:
               "Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом,   между слоями бисквита равномерно нанесен крем из творожного сыра.",
@@ -1048,31 +1054,36 @@ export default {
       console.log("popup");
     },
     addBasket(product) {
-      this.basket.push(
-        this.$set(this.basketContent, product.id, {
-          title: product.titles,
-          img: product.img,
-          count: product.count,
-          description: product.description,
-          price: product.price
-        })
-      );
-      // this.$set(this.basketContent, product.id, {
-      //   title: product.titles,
-      //   img: product.img,
-      //   count: product.count,
-      //   description: product.description,
-      //   totalPrice: product.totalPrice
-      // })
+      // if (this.basketContent.title != product.title) {
+      //   this.basket.push(
+      //     this.$set(this.basketContent, product.id, {
+      //       title: product.title,
+      //       img: product.img,
+      //       count: product.count,
+      //       description: product.description,
+      //       price: product.price
+      //     })
+      //   );
+      // }
+
+      this.$set(this.basketContent, product.id, {
+        title: product.title,
+        img: product.img,
+        count: product.count,
+        description: product.description,
+        totalPrice: product.totalPrice
+      })
       console.log(this.basket);
     },
     deleteBasketItem(index) {
-      console.log(index);
-      this.basket.splice(index, 1);
+      this.$delete(this.basketContent,index);
     },
     clearBasket() {
       this.basket = [];
     }
+  },
+  updated(){
+    console.log(this.basketContent);
   }
 };
 </script>

@@ -45,8 +45,8 @@
         <div class="products-img">
           <img :src="product.img" alt />
         </div>
-        <div class="titles">
-          <p>{{product.titles}}</p>
+        <div class="title">
+          <p>{{product.title}}</p>
           <img src="@/assets/icons/info.svg" alt />
         </div>
       </div>
@@ -118,24 +118,30 @@
               <div class="withRegistration" v-show="category.withRegistration">
                 <div class="row">
                   <div class="col-xl-4">
-                    <div class="card-cake">
+                    <div class="card-cake" @click="cardActive = !cardActive" :class="{cardActive}">
                       <div class="card-cake-img">
                         <img src="@/assets/product-img/product4.png" alt />
                       </div>
-                      <p>Шпинатный</p>
-                      <div class="cake-price">
-                        <p>от 700 ₸</p>
+                      <div class="card-cake-text">
+                        <b>Шпинатный</b>
+                        <p>Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом, между слоями бисквита равномерно нанесен крем из творожного сыра.</p>
+                        <div class="cake-price">
+                          <p>от 700 ₸</p>
+                        </div>
                       </div>
                     </div>
                   </div>
                   <div class="col-xl-4">
-                    <div class="card-cake cake-active">
+                    <div class="card-cake">
                       <div class="card-cake-img">
                         <img src="@/assets/product-img/product4.png" alt />
                       </div>
-                      <p>Шпинатный</p>
-                      <div class="cake-price">
-                        <p>от 700 ₸</p>
+                      <div class="card-cake-text">
+                        <b>Шпинатный</b>
+                        <p>Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом, между слоями бисквита равномерно нанесен крем из творожного сыра.</p>
+                        <div class="cake-price">
+                          <p>от 700 ₸</p>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -144,9 +150,12 @@
                       <div class="card-cake-img">
                         <img src="@/assets/product-img/product5.png" alt />
                       </div>
-                      <p>Чизкейк New York</p>
-                      <div class="cake-price">
-                        <p>от 700 ₸</p>
+                      <div class="card-cake-text">
+                        <b>Шпинатный</b>
+                        <p>Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом, между слоями бисквита равномерно нанесен крем из творожного сыра.</p>
+                        <div class="cake-price">
+                          <p>от 700 ₸</p>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -155,29 +164,37 @@
                       <div class="card-cake-img">
                         <img src="@/assets/product-img/product6.png" alt />
                       </div>
-                      <p>Шпинатный</p>
-                      <div class="cake-price">
-                        <p>от 700 ₸</p>
+                      <div class="card-cake-text">
+                        <b>Шпинатный</b>
+                        <p>Whoopie торт, Whoopie из 2 Whoopie Whoopie пропитанный кофейно-молочным сиропом, между слоями бисквита равномерно нанесен крем из творожного сыра.</p>
+                        <div class="cake-price">
+                          <p>от 700 ₸</p>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
                 <form action>
-                  <label for>Надпись на торте (максимум 15 букв)</label>
+                  <div class="inscription-error">
+                    <label for>Надпись на торте (максимум 15 букв)</label>
+                    <span
+                      v-if="$v.testName.$dirty && !$v.testName.maxLength"
+                      class="error-text invalid"
+                    >Максимум 15 букв</span>
+                    <span
+                      :class="{valid: ($v.testName.$dirty && $v.testName.required)}"
+                      v-if="$v.testName.$dirty && $v.testName.required"
+                    >Текст проверен!</span>
+                  </div>
                   <div class="input-reg">
                     <input
+                      class="valid"
                       type="text"
                       placeholder="Введите надпись"
-                      class="input-text"
-                      v-model.trim="name"
-                      :class="{invalid: ($v.testName.$dirty && !$v.name.required)}"
+                      v-model.trim="testName"
+                      :class="[{invalid: ($v.testName.$dirty && !$v.testName.required) || ($v.testName.$dirty && !$v.testName.maxLength)},{valid}]"
                     />
-                    />
-                    <button
-                      type="submit"
-                      class="brown-btn"
-                      @click.prevent="checkTest"
-                    >
+                    <button type="submit" class="brown-btn" @click.prevent="checkTest(checked)">
                       <i class="fas fa-check"></i>Проверить текст
                     </button>
                   </div>
@@ -188,24 +205,29 @@
               </div>
               <div class="inscription" v-show="category.inscription">
                 <form action>
-                  <div class="inscription-text">
+                  <div class="inscription-error">
                     <label for>Надпись на торте (максимум 15 букв)</label>
-                    <div class="input-reg">
-                      <input
-                        type="text"
-                        placeholder="Введите надпись"
-                        class="input-text"
-                        v-model.trim="name"
-                        :class="{invalid: ($v.testName.$dirty && !$v.name.required)}"
-                      />
-                      <button type="submit" class="brown-btn" @click.prevent="checkTest">
-                        <i class="fas fa-check"></i>Проверить текст
-                      </button>
-                    </div>
-                    <label for>
-                      <span class="red-text">Внимание!</span> Учтите раскладку клавиатуры. Как вы написали, так и будет изготовлено.
-                    </label>
+                    <span
+                      v-if="$v.testName.$dirty && !$v.testName.maxLength"
+                      class="error-text invalid"
+                    >Максимум 15 букв</span>
                   </div>
+                  <div class="input-reg">
+                    <input
+                      type="text"
+                      name
+                      id
+                      placeholder="Введите надпись"
+                      v-model.trim="testName"
+                      :class="{invalid: ($v.testName.$dirty && !$v.testName.required) || ($v.testName.$dirty && !$v.testName.maxLength)}"
+                    />
+                    <button type="submit" class="brown-btn" @click.prevent="checkTest">
+                      <i class="fas fa-check"></i>Проверить текст
+                    </button>
+                  </div>
+                  <label for>
+                    <span class="red-text">Внимание!</span> Учтите раскладку клавиатуры. Как вы написали, так и будет изготовлено.
+                  </label>
                 </form>
               </div>
               <div class="order-modal-bottom" v-if="!category.hard">
@@ -437,7 +459,7 @@
           <div class="col-xl-5 p-0">
             <div class="modal-right">
               <div class="title">
-                <h2>{{ product.titles }}</h2>
+                <h2>{{ product.title }}</h2>
               </div>
               <div class="modal-deskr">
                 <p>{{ product.description }}</p>
@@ -615,7 +637,7 @@
 <script>
 import {
   required,
-  minLength,
+  maxLength,
   userName,
   password
 } from "vuelidate/lib/validators";
@@ -632,10 +654,11 @@ export default {
     product: Object
   },
   data: () => ({
+    cardActive: false,
     name: "",
     review: "",
     testName: "",
-    password: "",
+    valid: false,
     reviewSuccess: false,
     reviewsContent: [],
     reviewModal: false,
@@ -673,11 +696,7 @@ export default {
   validations: {
     name: { required },
     review: { required },
-    password: { required, minLength: minLength(6) }
-    // userName: {
-    //   required,
-    //   testName: { required, minLength: minLength(6) }
-    // }
+    testName: { required, maxLength: maxLength(15) }
   },
   computed: {
     totalPrice() {
@@ -731,10 +750,17 @@ export default {
       this.review = "";
     },
     checkTest() {
+      if (this.testName.length < 15) {
+      }
       if (this.$v.$invalid) {
         this.$v.$touch();
         return;
       }
+    }
+  },
+  updated() {
+    console.log(this.testName.length);
+    if (this.testName.length < 15) {
     }
   }
 };

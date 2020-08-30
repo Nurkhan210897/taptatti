@@ -12,12 +12,27 @@ textarea:focus {
     border: 1px solid #FF2E47 !important;
 }
 
+.inscription-error {
+    .valid {
+        color: #5BBD76 !important;
+    }
+}
+
 .error-text.invalid {
     border: none !important;
     color: #FF2E47;
     font-size: 12px;
     line-height: 18px;
     letter-spacing: 0.035em;
+}
+
+.inscription-error {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .error-text.invalid {
+        font-weight: bold;
+    }
 }
 
 input,
@@ -630,7 +645,7 @@ label {
     .cake-category {
         padding: 0px 50px 50px;
     }
-    .cake-active {
+    .cardActive {
         border-color: $brown-bg !important;
         position: relative;
         &::before {
@@ -648,9 +663,10 @@ label {
         box-sizing: border-box;
         box-shadow: 0px 12px 11px -11px rgba(0, 138, 182, 0.12);
         border-radius: 10px;
-        padding: 20px 30px 30px;
         margin-bottom: 25px;
+        cursor: pointer;
         .card-cake-img {
+            padding: 20px 30px 0px;
             max-width: 234px;
             max-height: 170px;
             margin: 0 auto;
@@ -660,26 +676,41 @@ label {
                 object-fit: contain;
             }
         }
-        p {
-            font-size: 17px;
-            line-height: 24px;
-            text-align: center;
-            letter-spacing: 0.035em;
-            font-family: rounded-bold;
-        }
-        .cake-price {
-            background: #FFF2D3;
-            border-radius: 10px;
-            width: fit-content;
-            margin: 0 auto;
-            padding: 8px 15px;
-            p {
-                margin: 0;
-                font-size: 20px;
-                line-height: 28px;
+        .card-cake-text {
+            padding: 10px 30px 30px;
+            b {
+                font-size: 17px;
+                line-height: 24px;
                 text-align: center;
-                letter-spacing: 0.03em;
+                letter-spacing: 0.035em;
                 font-family: rounded-bold;
+                color: $brown-text;
+            }
+            P {
+                margin: 10px 0 15px;
+                font-family: rounded-light;
+                font-size: 14px;
+            }
+            .cake-price {
+                background: #FFF2D3;
+                border-radius: 10px;
+                width: fit-content;
+                margin: 0 auto;
+                padding: 8px 15px;
+                p {
+                    margin: 0;
+                    font-size: 20px;
+                    line-height: 28px;
+                    text-align: center;
+                    letter-spacing: 0.03em;
+                    font-family: rounded-bold;
+                }
+            }
+        }
+        &:hover {
+            .card-cake-text {
+                background-color: #FFFCF3;
+                border-radius: 0 0 10px 10px;
             }
         }
     }
@@ -835,6 +866,13 @@ label {
     .btn-outline {
         font-size: 15px;
         padding: 13px 25px;
+    }
+    a {
+        transition: all .5s ease;
+        text-decoration: none;
+        &:hover {
+            color: $brown-text !important;
+        }
     }
 }
 
