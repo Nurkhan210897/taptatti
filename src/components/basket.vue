@@ -3,7 +3,7 @@
     <div class="order-header">
       <h3>
         <img src="@/assets/icons/cart.svg" alt />Корзина
-        <span class="basket-count">{{ basketCount }}</span>
+        <span class="basket-count">{{ totalCount }}</span>
       </h3>
       <span class="basket-delete" @click="clearBasket">
         <img src="@/assets/icons/basket.svg" alt />
@@ -33,7 +33,7 @@
           </span>
         </div>
         <div class="total-count">
-          <h3>{{item.price}}</h3>
+          <h3>{{item.totalPrice}}</h3>
         </div>
       </div>
     </div>
@@ -44,7 +44,7 @@
 
       <div class="total-price">
         <p>Сумма заказа</p>
-        <h3>{{basketSum}}</h3>
+        <p>{{totalSum}}</p>
       </div>
       <button type="button" class="brown-btn">Оформить заказ</button>
       <span class="be-bonus">
@@ -59,6 +59,50 @@
 
 <script>
 export default {
+  props: {
+    item: Object,
     
-}
+  },
+  data(){
+    return {
+      basketContent:{},
+      totalSum:0,
+      totalCount:0
+    }
+  },
+  methods: {
+    plusBasket(product) {
+      this.basketContent[product.id].count += 1;
+      this.basketContent[product.id].totalPrice += product.price;
+      this.totalSum = Number(this.totalSum) + Number(product.price);
+      this.totalCount += 1;
+    },
+    minusBasket(product) {
+      this.basketContent[product.id].count -= 1;
+      this.basketContent[product.id].totalPrice -= product.price;
+      this.totalSum = Number(this.totalSum) - Number(product.price);
+      this.totalCount -= 1;
+    },
+    deleteBasketItem(index) {
+      this.totalSum=Number(this.totalSum)-Number(this.basketContent[index].totalPrice);
+      this.totalCount=Number(this.totalCount)-Number(this.basketContent[index].count);
+      this.$delete(this.basketContent, index);
+    },
+    clearBasket() {
+      this.basketContent = {};
+      this.totalSum=0;
+      this.totalCount=0;
+    }
+  },
+  watch:{
+    item(){
+      console.log(this.item);
+      var product=this.item;
+      product.totalPrice=Number(this.item.count)*Number(this.item.price);
+      this.$set(this.basketContent,this.item.id,product);
+      this.totalCount+=this.item.count;
+      this.totalSum+=Number(this.item.price)*Number(this.item.count);
+    }
+  }
+};
 </script>

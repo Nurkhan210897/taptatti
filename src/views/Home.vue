@@ -5,7 +5,7 @@
         <div class="main-slider-item">
           <img src="@/assets/images/main-slider.png" alt />
           <div class="container">
-            <div class="slider-text">
+            <div class="slider-text" @click="popupShow">
               <h2>Большой выбор тортов и выпечки</h2>
               <div class="slider-deskr">
                 <img src="@/assets/images/icon_prod.svg" alt />
@@ -203,77 +203,24 @@
           </div>
           <div class="col-xl-3">
             <div class="product-right">
-              <div class="order">
-                <div class="order-header">
-                  <h3>
-                    <img src="@/assets/icons/cart.svg" alt />Корзина
-                    <span class="basket-count">{{ basketCount }}</span>
-                  </h3>
-                  <span class="basket-delete" @click="clearBasket">
-                    <img src="@/assets/icons/basket.svg" alt />
-                  </span>
-                </div>
-                <div class="basket" v-for="(item, index) in basketContent" :key="index">
-                  <span class="delete-basket" @click="deleteBasketItem(index)">
-                    <img src="@/assets/icons/exit-basket.svg" alt />
-                  </span>
-                  <div class="basket-top">
-                    <div class="basket-img">
-                      <img :src="item.img" alt />
-                    </div>
-                    <div class="basket-deskr">
-                      <b>{{item.title}}</b>
-                      <p class="silver-text">{{ item.description }}</p>
-                    </div>
-                  </div>
-                  <div class="product-count">
-                    <div class="count">
-                      <span @click="minusBasket(item)">
-                        <i class="fas fa-minus"></i>
-                      </span>
-                      <p>{{item.count}}</p>
-                      <span @click="plusBasket(item)">
-                        <i class="fas fa-plus"></i>
-                      </span>
-                    </div>
-                    <div class="total-count">
-                      <h3>{{item.price}}</h3>
-                    </div>
-                  </div>
-                </div>
-                <div class="basket-last">
-                  <router-link to="/OrderBasket">
-                    <img src="@/assets/icons/delivery.svg" alt />Статус доставки
-                  </router-link>
-
-                  <div class="total-price">
-                    <p>Сумма заказа</p>
-                    <h3>{{basketSum}}</h3>
-                  </div>
-                  <button type="button" class="brown-btn">Оформить заказ</button>
-                  <span class="be-bonus">
-                    <p>
-                      <span class="silver-text">Начислится</span>
-                      <b>710</b> бонусов
-                    </p>
-                  </span>
-                </div>
-              </div>
+              <Basket :item="basketProduct"/>
               <div class="history-orders">
-                <div class="order-header" @click="orderShow = !orderShow">
+                <div class="order-header" @click="orderShow.orderContent = !orderShow.orderContent">
                   <h3>
                     <img src="@/assets/icons/clock.svg" alt />История заказов
                     <img
                       src="@/assets/icons/arrow-bottom.svg"
                       alt
-                      :class="{ activeDropdown: orderShow}"
+                      :class="{ activeDropdown: orderShow.orderContent}"
                     />
                   </h3>
                 </div>
-                <div class="history-orders-content" v-if="orderShow">
-                  <p>14 июля 2020</p>
-                  <b>№ Almaty-3-51488</b>
-                  <div class="order-info">
+                <div class="history-orders-content" v-if="orderShow.orderContent">
+                  <div class="history-order-header" :class="{orderShow: orderShow.orderInfo}">
+                    <p>14 июля 2020</p>
+                    <b>№ Almaty-3-51488</b>
+                  </div>
+                  <div class="order-info" v-if="orderShow.orderInfo">
                     <b>Чизкейк New York</b>
                     <p class="light-brown">Тонкое тесто, 35 см</p>
                     <p>
@@ -281,7 +228,7 @@
                     </p>
                     <p class="light-brown">Тонкое тесто, 30 см</p>
                   </div>
-                  <p class="blue-text">Подробнее</p>
+                  <a href="#"  class="blue-text d-block" @click.prevent="orderShow.orderInfo = !orderShow.orderInfo">Подробнее <img src="@/assets/icons/arrow-blue.svg" alt="" :class="{activeDropdown: orderShow.orderInfo}"></a>
                   <button class="btn btn-outline-yellow">Повторить</button>
                 </div>
                 <div class="all-history">
@@ -307,18 +254,24 @@
 <script>
 import Product from "@/components/Product.vue";
 import Vpopup from "@/components/V-popup.vue";
+import Basket from "@/components/Basket.vue";
 
 export default {
   name: "Home",
 
   components: {
     Product,
-    Vpopup
+    Vpopup,
+    Basket
   },
   data: () => ({
-    basketSum:0,
-    basketCount:0,
-    orderShow: false,
+    basketSum: 0,
+    basketCount: 0,
+    basketProduct:{},
+    orderShow: {
+      orderContent: false,
+      orderInfo: false
+    },
     isActiveModal: false,
     basket: [],
     basketContent: {},
@@ -1056,41 +1009,40 @@ export default {
       console.log("popup");
     },
     addBasket(product) {
-      if(this.basketContent[product.id]!==undefined){
-        this.basketContent[product.id].count+=product.count;
-
-      }else{
-        this.$set(this.basketContent, product.id, {
-          id:product.id,
-        title: product.title,
-        img: product.img,
-        count: product.count,
-        description: product.description,
-        price:product.price,
-        totalPrice: Number(product.count)*Number(product.price)
-      });
-      }
-      this.basketSum+=Number(product.count)*Number(product.price);
-      this.basketCount+=product.count;
+      this.basketProduct=product;
+      // if (this.basketContent[product.id] !== undefined) {
+      //   this.basketContent[product.id].count += product.count;
+      // } else {
+      //   this.$set(this.basketContent, product.id, {
+      //     id: product.id,
+      //     title: product.title,
+      //     img: product.img,
+      //     count: product.count,
+      //     description: product.description,
+      //     price: product.price,
+      //     totalPrice: Number(product.count) * Number(product.price)
+      //   });
+      // }
+      // this.basketSum += Number(product.count) * Number(product.price);
+      // this.basketCount += product.count;
     },
-    plusBasket(product){
-      console.log(product);
-      this.basketContent[product.id].count+=1;
-      this.basketSum=Number(this.basketSum)+Number(product.price);
-      this.basketCount+=1;  
-    },
-    minusBasket(product){
-      this.basketContent[product.id].count-=1;
-      this.basketSum=Number(this.basketSum)-Number(product.price);
-      this.basketCount-=1;
-    },
-    deleteBasketItem(index) {
-      this.$delete(this.basketContent,index);
-    },
-    clearBasket() {
-      this.basket = [];
-    }
-  },
-
+    // plusBasket(product) {
+    //   console.log(product);
+    //   this.basketContent[product.id].count += 1;
+    //   this.basketSum = Number(this.basketSum) + Number(product.price);
+    //   this.basketCount += 1;
+    // },
+    // minusBasket(product) {
+    //   this.basketContent[product.id].count -= 1;
+    //   this.basketSum = Number(this.basketSum) - Number(product.price);
+    //   this.basketCount -= 1;
+    // },
+    // deleteBasketItem(index) {
+    //   this.$delete(this.basketContent, index);
+    // },
+    // clearBasket() {
+    //   this.basket = [];
+    // }
+  }
 };
 </script>

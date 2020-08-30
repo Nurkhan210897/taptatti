@@ -60,7 +60,7 @@
             <i class="fas fa-plus"></i>
           </span>
         </div>
-        <button class="btn-outline">{{ totalPrice.toLocaleString() }}₸</button>
+        <button class="btn-outline"  @click="addBasket">{{ totalPrice.toLocaleString() }}₸</button>
       </div>
     </div>
     <transition name="fade">
@@ -181,20 +181,32 @@
                       v-if="$v.testName.$dirty && !$v.testName.maxLength"
                       class="error-text invalid"
                     >Максимум 15 букв</span>
-                    <span
-                      :class="{valid: ($v.testName.$dirty && $v.testName.required)}"
-                      v-if="$v.testName.$dirty && $v.testName.required"
-                    >Текст проверен!</span>
+                    <div>
+                      <span
+                        class="valid"
+                        v-if="$v.testName.$dirty && $v.testName.required"
+                      >Текст проверен!</span>
+                      <a
+                        href="#"
+                        @click.prevent="changeText"
+                        class="change-text"
+                        v-if="$v.testName.$dirty && $v.testName.required"
+                      >Изменить текст</a>
+                    </div>
                   </div>
                   <div class="input-reg">
                     <input
-                      class="valid"
                       type="text"
                       placeholder="Введите надпись"
                       v-model.trim="testName"
-                      :class="[{invalid: ($v.testName.$dirty && !$v.testName.required) || ($v.testName.$dirty && !$v.testName.maxLength)},{valid}]"
+                      :class="[{invalid: ($v.testName.$dirty && !$v.testName.required) || ($v.testName.$dirty && !$v.testName.maxLength), valid: ($v.testName.$dirty && $v.testName.required) || ($v.testName.$dirty && $v.testName.maxLength)},]"
                     />
-                    <button type="submit" class="brown-btn" @click.prevent="checkTest(checked)">
+                    <button
+                      type="submit"
+                      class="brown-btn"
+                      @click.prevent="checkTest()"
+                      :class="{showclean}"
+                    >
                       <i class="fas fa-check"></i>Проверить текст
                     </button>
                   </div>
@@ -236,10 +248,6 @@
                     <p>Стоимость добавление надписи:</p>
                     <span>500 ₸</span>
                   </li>
-                  <!-- <li>
-                    <p>Оформление по фото/мастикой:</p>
-                    <span>1500 ₸</span>
-                  </li>-->
                   <li>
                     <p>Сумма заказа:</p>
                     <span>2500 ₸</span>
@@ -706,6 +714,7 @@ export default {
   methods: {
     addBasket() {
       this.$emit("addBasket");
+      this.popup = false;
     },
     categoryBtn(item) {
       for (let i in this.category) {
@@ -751,11 +760,20 @@ export default {
     },
     checkTest() {
       if (this.testName.length < 15) {
+        console.log("this < 15");
+        console.log(this.testName.length);
+        this.showclean = true;
+      } else {
+        console.log("this > 15");
       }
       if (this.$v.$invalid) {
         this.$v.$touch();
         return;
       }
+    },
+    changeText() {
+      this.showclean = false;
+      this.testName = "";
     }
   },
   updated() {

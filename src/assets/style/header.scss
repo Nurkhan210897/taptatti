@@ -41,6 +41,7 @@ html {
 .city-select {
     display: flex;
     align-items: center;
+    margin-right: 10px;
     .v-select {
         min-width: 110px;
         .vs__selecte {
@@ -52,8 +53,12 @@ html {
 }
 
 .lang-select {
+    margin-right: 22px;
+}
+
+.lang-select {
     .v-select {
-        min-width: 80px;
+        min-width: 40px;
         font-size: 15px;
     }
 }
@@ -138,6 +143,9 @@ html {
             }
         }
     }
+    .dropdown-main {
+        position: relative;
+    }
     .bonus-user {
         height: 45px;
         background-color: #FCF18C;
@@ -165,11 +173,18 @@ html {
         &:hover {
             background-color: $brown-bg;
             stroke: #FCF18C;
-            color: #FCF18C;
-            p {
-                color: #FCF18C;
-                ;
+            .bonus-count {
+                b {
+                    color: #FCF18C;
+                }
+                p {
+                    color: #FCF18C;
+                }
             }
+        }
+        .dropdown-header {
+            position: absolute;
+            left: 0;
         }
     }
     .basket-head {

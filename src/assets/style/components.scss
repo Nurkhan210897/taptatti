@@ -15,7 +15,27 @@ textarea:focus {
 .inscription-error {
     .valid {
         color: #5BBD76 !important;
+        font-size: 12px;
+        line-height: 17px;
+        text-align: right;
+        letter-spacing: 0.045em;
+        font-family: rounded-bold;
     }
+}
+
+.change-text {
+    margin-left: 25px;
+    font-size: 12px;
+    line-height: 17px;
+    text-align: right;
+    letter-spacing: 0.045em;
+    color: #4ABBC1;
+    font-family: rounded-bold;
+}
+
+.input-reg .valid {
+    background: #F1FDF5;
+    border: 1px solid #5BBD76;
 }
 
 .error-text.invalid {
@@ -44,12 +64,15 @@ textarea {
     }
 }
 
-.dropdown-menu {
+.dropdown-menu-header {
+    background-color: #fff;
+    position: absolute;
     padding: 25px 18px;
     filter: drop-shadow(0px 0px 6px rgba(92, 55, 0, 0.1));
     border: none;
     top: 50px;
     display: block;
+    left: -20px;
     ul {
         background: #FFFFFF;
         border-radius: 8px;
@@ -70,6 +93,42 @@ textarea {
                     color: $blue-text;
                 }
             }
+        }
+    }
+}
+
+.profile {
+    filter: drop-shadow(0px 0px 6px rgba(92, 55, 0, 0.1));
+    border-radius: 8px;
+    width: 270px;
+    left: -75px;
+    background-color: #fff;
+    position: absolute;
+    padding: 25px 30px;
+    border: none;
+    top: 50px;
+    display: block;
+    .tabs-btn {
+        margin-bottom: 20px !important;
+    }
+    .brown-btn {
+        width: 100%;
+        margin-top: 20px;
+    }
+}
+
+.input-pass {
+    text-align: right;
+    a {
+        display: block;
+        font-size: 11px;
+        line-height: 15px;
+        text-align: right;
+        letter-spacing: 0.035em;
+        color: #4ABBC1;
+        text-decoration: none;
+        &:hover {
+            color: $brown-text;
         }
     }
 }
@@ -235,11 +294,10 @@ label {
     transform: rotate(180deg);
 }
 
-// .addBonus {
-//     animation-name: slidein;
-//     animation-duration: 3s;
-//     transition: all .5s ease;
-// }
+.showclean {
+    display: none;
+}
+
 .addBonus {
     animation-duration: 1s;
     animation-name: addBonus;
@@ -362,6 +420,9 @@ label {
     align-items: center;
     img {
         margin-right: 8px;
+    }
+    .tooltip-product {
+        top: -12px !important;
     }
 }
 

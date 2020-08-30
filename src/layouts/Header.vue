@@ -66,40 +66,45 @@
                   <li class="lang-select">
                     <v-select :options="lang" label="value" :clearable="false" v-model="selectlang"></v-select>
                   </li>
-                  <li class="bonus-user dropdown" @click="showDrop" ref="dropdown-wrapper">
-                    <svg
-                      width="24"
-                      height="29"
-                      viewBox="0 0 24 29"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="user-icon"
+                  <li class="dropdown-main" ref="dropdown-wrapper">
+                    <div
+                      class="bonus-user"
+                      @click.prevent="showDropdown.profile = !showDropdown.profile"
                     >
-                      <circle
-                        cx="12.1406"
-                        cy="7.33205"
-                        r="5.51564"
-                        stroke-width="2.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M2 26.8164V22.9885C2 17.3879 6.54021 12.8477 12.1409 12.8477C17.7415 12.8477 22.2817 17.3879 22.2817 22.9885V26.8164"
-                        stroke-width="2.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
+                      <svg
+                        width="24"
+                        height="29"
+                        viewBox="0 0 24 29"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="user-icon"
+                      >
+                        <circle
+                          cx="12.1406"
+                          cy="7.33205"
+                          r="5.51564"
+                          stroke-width="2.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M2 26.8164V22.9885C2 17.3879 6.54021 12.8477 12.1409 12.8477C17.7415 12.8477 22.2817 17.3879 22.2817 22.9885V26.8164"
+                          stroke-width="2.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                      <div class="bonus-count">
+                        <b>250</b>
+                        <p>бонусы</p>
+                      </div>
+                    </div>
 
-                    <div>
-                      <b>250</b>
-                      <p>бонусы</p>
-                    </div>
-                    <div class="dropdown-menu" v-show="showDropdown">
+                    <div class="dropdown-menu-header" v-if="showDropdown.showUser">
                       <ul>
                         <li>
                           <img src="@/assets/icons/profile.svg" alt />
-                          <a href="#">Профиль</a>
+                          <a @click.prevent="showDropdown.profile = !showDropdown.profile">Профиль</a>
                         </li>
                         <li>
                           <img src="@/assets/icons/settings.svg" alt />
@@ -111,21 +116,60 @@
                         </li>
                       </ul>
                     </div>
-                    <div class="dropdown-menu" v-show="profile">
-                      <ul>
-                        <li>
-                          <img src="@/assets/icons/profile.svg" alt />
-                          <a href="#">Профиль</a>
-                        </li>
-                        <li>
-                          <img src="@/assets/icons/settings.svg" alt />
-                          <a href="#">Настройки</a>
-                        </li>
-                        <li>
-                          <img src="@/assets/icons/exit-profile.svg" alt />
-                          <a href="#">Выход</a>
-                        </li>
-                      </ul>
+                    <div class="profile" v-if="showDropdown.profile">
+                      <div class="profive-header">
+                        <div class="tabs-btn">
+                          <a href="#" @click="tabRegist('signIn')">Войти</a>
+                          <a href="#" @click="tabRegist('checkIn')">Регистрация</a>
+                        </div>
+                      </div>
+                      <div class="profile-content" v-if="showDropdown.signIn">
+                        <form action>
+                          <label for>Номер телефона</label>
+                          <div class="input-num">
+                            <img src="@/assets/images/flag.png" alt />
+                            <input
+                              type="tel"
+                              v-mask="'+#(###) ###-##-##'"
+                              placeholder="+7 (___) ___ __ __"
+                              class="input-text"
+                            />
+                          </div>
+                          <label for>Пароль</label>
+                          <div class="input-pass">
+                            <input type="password" placeholder="・・・" class="input-text" />
+                            <a href="#">Восстановить пароль</a>
+                          </div>
+
+                          <input type="submit" class="btn brown-btn" />
+                        </form>
+                      </div>
+                      <div class="profile-content" v-if="showDropdown.regist">
+                        <form action>
+                          <label for>Ваше имя</label>
+                          <div class="input-num">
+                            <img src="@/assets/images/flag.png" alt />
+                            <input type="text" placeholder="Как Вас зовут?" class="input-text" />
+                          </div>
+                          <label for>Номер телефона</label>
+                          <div class="input-num">
+                            <img src="@/assets/images/flag.png" alt />
+                            <input type="text" placeholder="Как Вас зовут?" class="input-text" />
+                          </div>
+                          <label for>Пароль</label>
+                          <div class="input-pass">
+                            <input type="password" placeholder class="input-text" />
+                          </div>
+                          <label class="label-date" for>
+                            Дата рождения
+                            <img src="@/assets/images/info.png" alt />
+                          </label>
+                          <div class="input-num">
+                            <input type="date" class="input-text" />
+                          </div>
+                          <input type="submit" class="btn brown-btn" />
+                        </form>
+                      </div>
                     </div>
                   </li>
                   <li class="basket-head dropdown">
@@ -147,7 +191,7 @@
             <div class="bonus-mobile">
               <div class="bonus-user">
                 <img src="@/assets/icons/user.svg" alt />
-                <div>
+                <div class="bonus-count">
                   <b>250</b>
                   <p>бонусы</p>
                 </div>
@@ -233,7 +277,12 @@
 <script>
 export default {
   data: () => ({
-    showDropdown: false,
+    showDropdown: {
+      showUser: false,
+      showBasket: false,
+      profile: false,
+      signIn: true
+    },
     activeClass: {
       type: String,
       default: "is-active"
@@ -254,22 +303,28 @@ export default {
     lang: ["Рус", "Каз", "En"]
   }),
   methods: {
-    showDrop() {
-      this.showDropdown = !this.showDropdown;
-    },
     mobileActive() {
       this.activeMenu = !this.activeMenu;
       this.burgerActive = !this.burgerActive;
-    }
-  },
-  mounted() {
-    let vm = this;
-    document.addEventListener("click", function(e) {
-      if (e.target != vm.$refs["dropdown-wrapper"]) {
-        vm.showDropdown = false
+    },
+    tabRegist(val) {
+      console.log("tabRegist");
+      for (let i in this.showDropdown) {
+        if (i !== val) {
+          this.showDropdown[i] = false;
+        }
+        console.log(i !== val);
       }
-    });
+    }
   }
+  // mounted() {
+  //   let vm = this;
+  //   document.addEventListener("click", function(e) {
+  //     if (e.target != vm.$refs["dropdown-wrapper"]) {
+  //       vm.showDropdown = false
+  //     }
+  //   });
+  // }
 };
 </script>
 

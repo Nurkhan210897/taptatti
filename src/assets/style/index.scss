@@ -257,14 +257,22 @@
                 letter-spacing: 0.03em;
                 font-family: rounded-bold;
                 font-weight: bold;
-                min-width: 38px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 38px;
             }
             button {
                 font-size: 20px;
                 text-align: center;
                 letter-spacing: 0.03em;
                 padding: 6px 18px;
-                margin-left: 10px
+                margin-left: 10px;
+                width: 105px;
+                max-width: 125px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
         }
     }
@@ -491,6 +499,13 @@
         .history-orders-content {
             border-bottom: 1px solid #F3F1ED;
             padding: 16px 25px 20px;
+            .history-order-header {
+                font-size: 16px;
+                line-height: 24px;
+                letter-spacing: 0.035em;
+                font-family: rounded-bold;
+                color: $blue-text;
+            }
             p {
                 margin-bottom: 0;
             }
@@ -508,7 +523,6 @@
                 font-size: 15px;
                 margin-top: 13px;
                 padding: 5px 20px;
-                color: $brown-text;
             }
         }
         .order-info {
@@ -523,6 +537,7 @@
                 font-size: 13px;
                 line-height: 24px;
                 letter-spacing: 0.035em;
+                color: $brown-text;
             }
         }
         .all-history {
@@ -532,6 +547,11 @@
             text-align: center;
             letter-spacing: 0.035em;
         }
+    }
+    
+    .orderShow {
+        color: $brown-text !important;
+        opacity: .5;
     }
     
     .reviews-header {
