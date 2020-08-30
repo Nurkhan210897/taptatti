@@ -1058,6 +1058,7 @@ export default {
     addBasket(product) {
       if(this.basketContent[product.id]!==undefined){
         this.basketContent[product.id].count+=product.count;
+
       }else{
         this.$set(this.basketContent, product.id, {
           id:product.id,
@@ -1090,8 +1091,6 @@ export default {
       this.basket = [];
     }
   },
-  updated(){
-    console.log(this.basketContent);
-  }
+
 };
 </script>

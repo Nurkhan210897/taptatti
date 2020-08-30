@@ -1,4 +1,4 @@
-# tabtatti-vue
+# taptatti-vue
 
 ## Project setup
 ```

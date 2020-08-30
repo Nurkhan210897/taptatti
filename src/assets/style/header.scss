@@ -16,14 +16,26 @@ html {
 
 .vs__open-indicator {
     fill: #5D2524;
-    transform: scale(.8);
+    transform: scale(.5);
+}
+
+.vs__actions {
+    padding: 0 !important;
+}
+
+.vs--open .vs__open-indicator {
+    transform: rotate(180deg) scale(.5);
 }
 
 .vs__selected {
     font-weight: 600;
     font-family: rounded-regular;
     color: #5D2524;
-    margin-bottom: 3px;
+    margin: 0 0 3px;
+}
+
+.vs__selected-options {
+    flex-wrap: inherit;
 }
 
 .city-select {
@@ -283,7 +295,7 @@ html {
 .bottom-nav {
     background: #FCF18C;
     box-shadow: 0px 5px 10px -6px rgba(25, 52, 61, 0.31);
-    padding: 35px 0 22px;
+    padding: 45px 0 22px;
     display: flex;
     width: 100%;
     z-index: 1;

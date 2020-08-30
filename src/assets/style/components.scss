@@ -423,7 +423,7 @@ label {
     border-radius: 4px;
     padding: 2px 10px;
     .v-select {
-        min-width: 150px;
+        min-width: 120px;
         font-size: 12px;
         letter-spacing: 0.035em;
         line-height: 18px;
@@ -434,6 +434,7 @@ label {
 .vs__dropdown-toggle {
     cursor: pointer !important;
     padding: 0 !important;
+    height: 26px;
 }
 
 #vs5__listbox {
