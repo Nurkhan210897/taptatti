@@ -207,7 +207,7 @@
                 <div class="order-header">
                   <h3>
                     <img src="@/assets/icons/cart.svg" alt />Корзина
-                    <span class="basket-count">{{ basketContent.length }}</span>
+                    <span class="basket-count">{{ basketCount }}</span>
                   </h3>
                   <span class="basket-delete" @click="clearBasket">
                     <img src="@/assets/icons/basket.svg" alt />
@@ -228,11 +228,11 @@
                   </div>
                   <div class="product-count">
                     <div class="count">
-                      <span>
+                      <span @click="minusBasket(item)">
                         <i class="fas fa-minus"></i>
                       </span>
                       <p>{{item.count}}</p>
-                      <span>
+                      <span @click="plusBasket(item)">
                         <i class="fas fa-plus"></i>
                       </span>
                     </div>
@@ -248,7 +248,7 @@
 
                   <div class="total-price">
                     <p>Сумма заказа</p>
-                    <h3>2500₸</h3>
+                    <h3>{{basketSum}}</h3>
                   </div>
                   <button type="button" class="brown-btn">Оформить заказ</button>
                   <span class="be-bonus">
@@ -316,6 +316,8 @@ export default {
     Vpopup
   },
   data: () => ({
+    basketSum:0,
+    basketCount:0,
     orderShow: false,
     isActiveModal: false,
     basket: [],
@@ -1054,26 +1056,32 @@ export default {
       console.log("popup");
     },
     addBasket(product) {
-      // if (this.basketContent.title != product.title) {
-      //   this.basket.push(
-      //     this.$set(this.basketContent, product.id, {
-      //       title: product.title,
-      //       img: product.img,
-      //       count: product.count,
-      //       description: product.description,
-      //       price: product.price
-      //     })
-      //   );
-      // }
-
-      this.$set(this.basketContent, product.id, {
+      if(this.basketContent[product.id]!==undefined){
+        this.basketContent[product.id].count+=product.count;
+      }else{
+        this.$set(this.basketContent, product.id, {
+          id:product.id,
         title: product.title,
         img: product.img,
         count: product.count,
         description: product.description,
-        totalPrice: product.totalPrice
-      })
-      console.log(this.basket);
+        price:product.price,
+        totalPrice: Number(product.count)*Number(product.price)
+      });
+      }
+      this.basketSum+=Number(product.count)*Number(product.price);
+      this.basketCount+=product.count;
+    },
+    plusBasket(product){
+      console.log(product);
+      this.basketContent[product.id].count+=1;
+      this.basketSum=Number(this.basketSum)+Number(product.price);
+      this.basketCount+=1;  
+    },
+    minusBasket(product){
+      this.basketContent[product.id].count-=1;
+      this.basketSum=Number(this.basketSum)-Number(product.price);
+      this.basketCount-=1;
     },
     deleteBasketItem(index) {
       this.$delete(this.basketContent,index);
