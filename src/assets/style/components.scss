@@ -23,6 +23,10 @@ textarea:focus {
     }
 }
 
+.profileDropdown {
+    display: block;
+}
+
 .change-text {
     margin-left: 25px;
     font-size: 12px;
@@ -108,12 +112,24 @@ textarea {
     border: none;
     top: 50px;
     display: block;
+    z-index: 99;
     .tabs-btn {
         margin-bottom: 20px !important;
     }
     .brown-btn {
         width: 100%;
         margin-top: 20px;
+        padding: 15px 0;
+        font-size: 15px;
+    }
+    &::after {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 20px;
+        height: 20px;
+        background-color: red;
+        transform: rotate(45deg);
     }
 }
 

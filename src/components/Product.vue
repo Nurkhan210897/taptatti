@@ -495,7 +495,7 @@
               </div>
               <div class="button-modal">
                 <button class="btn btn-outline">Купить сразу</button>
-                <button class="btn brown-btn" @click="addBasket">Добавить в корзину</button>
+                <button class="btn brown-btn addBasket" @click="addBasket">Добавить в корзину</button>
               </div>
               <div class="reviews-header">
                 <div class="reviews-top">

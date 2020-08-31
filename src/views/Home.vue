@@ -1010,39 +1010,7 @@ export default {
     },
     addBasket(product) {
       this.basketProduct=product;
-      // if (this.basketContent[product.id] !== undefined) {
-      //   this.basketContent[product.id].count += product.count;
-      // } else {
-      //   this.$set(this.basketContent, product.id, {
-      //     id: product.id,
-      //     title: product.title,
-      //     img: product.img,
-      //     count: product.count,
-      //     description: product.description,
-      //     price: product.price,
-      //     totalPrice: Number(product.count) * Number(product.price)
-      //   });
-      // }
-      // this.basketSum += Number(product.count) * Number(product.price);
-      // this.basketCount += product.count;
     },
-    // plusBasket(product) {
-    //   console.log(product);
-    //   this.basketContent[product.id].count += 1;
-    //   this.basketSum = Number(this.basketSum) + Number(product.price);
-    //   this.basketCount += 1;
-    // },
-    // minusBasket(product) {
-    //   this.basketContent[product.id].count -= 1;
-    //   this.basketSum = Number(this.basketSum) - Number(product.price);
-    //   this.basketCount -= 1;
-    // },
-    // deleteBasketItem(index) {
-    //   this.$delete(this.basketContent, index);
-    // },
-    // clearBasket() {
-    //   this.basket = [];
-    // }
   }
 };
 </script>

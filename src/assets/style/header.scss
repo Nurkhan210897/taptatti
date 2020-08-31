@@ -58,7 +58,7 @@ html {
 
 .lang-select {
     .v-select {
-        min-width: 40px;
+        width: 40px;
         font-size: 15px;
     }
 }
@@ -188,6 +188,7 @@ html {
         }
     }
     .basket-head {
+        cursor: pointer;
         width: 50px;
         height: 45px;
         background-color: #5D2524;

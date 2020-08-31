@@ -55,7 +55,8 @@ window.addEventListener('scroll', () => {
 var mutationObserver = new MutationObserver(function(mutations) {
     mutations.forEach(function(mutation) {});
     let exitModal = document.querySelector('.exit')
-    exitModal.addEventListener('click', function() {
+    let addBasket = document.querySelector('.addBasket')
+    exitModal, addBasket.addEventListener('click', function() {
         document.body.style.overflowY = "inherit"
     });
 });

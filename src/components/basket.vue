@@ -60,15 +60,14 @@
 <script>
 export default {
   props: {
-    item: Object,
-    
+    item: Object
   },
-  data(){
+  data() {
     return {
-      basketContent:{},
-      totalSum:0,
-      totalCount:0
-    }
+      basketContent: {},
+      totalSum: 0,
+      totalCount: 0
+    };
   },
   methods: {
     plusBasket(product) {
@@ -78,30 +77,34 @@ export default {
       this.totalCount += 1;
     },
     minusBasket(product) {
-      this.basketContent[product.id].count -= 1;
-      this.basketContent[product.id].totalPrice -= product.price;
-      this.totalSum = Number(this.totalSum) - Number(product.price);
-      this.totalCount -= 1;
+      if (this.totalCount != 1) {
+        this.basketContent[product.id].count -= 1;
+        this.basketContent[product.id].totalPrice -= product.price;
+        this.totalSum = Number(this.totalSum) - Number(product.price);
+        this.totalCount -= 1;
+      }
     },
     deleteBasketItem(index) {
-      this.totalSum=Number(this.totalSum)-Number(this.basketContent[index].totalPrice);
-      this.totalCount=Number(this.totalCount)-Number(this.basketContent[index].count);
+      this.totalSum =
+        Number(this.totalSum) - Number(this.basketContent[index].totalPrice);
+      this.totalCount =
+        Number(this.totalCount) - Number(this.basketContent[index].count);
       this.$delete(this.basketContent, index);
     },
     clearBasket() {
       this.basketContent = {};
-      this.totalSum=0;
-      this.totalCount=0;
+      this.totalSum = 0;
+      this.totalCount = 0;
     }
   },
-  watch:{
-    item(){
+  watch: {
+    item() {
       console.log(this.item);
-      var product=this.item;
-      product.totalPrice=Number(this.item.count)*Number(this.item.price);
-      this.$set(this.basketContent,this.item.id,product);
-      this.totalCount+=this.item.count;
-      this.totalSum+=Number(this.item.price)*Number(this.item.count);
+      var product = this.item;
+      product.totalPrice = Number(this.item.count) * Number(this.item.price);
+      this.$set(this.basketContent, this.item.id, product);
+      this.totalCount += this.item.count;
+      this.totalSum += Number(this.item.price) * Number(this.item.count);
     }
   }
 };

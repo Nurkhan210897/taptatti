@@ -116,11 +116,19 @@
                         </li>
                       </ul>
                     </div>
-                    <div class="profile" v-if="showDropdown.profile">
-                      <div class="profive-header">
+                    <div class="profile" v-show="showDropdown.profile">
+                      <div class="profile-header">
                         <div class="tabs-btn">
-                          <a href="#" @click="tabRegist('signIn')">Войти</a>
-                          <a href="#" @click="tabRegist('checkIn')">Регистрация</a>
+                          <a
+                            href="#"
+                            @click="tabRegist('signIn')"
+                            :class="{activeTab: showDropdown.signIn}"
+                          >Войти</a>
+                          <a
+                            href="#"
+                            @click="tabRegist('regist')"
+                            :class="{activeTab: showDropdown.regist}"
+                          >Регистрация</a>
                         </div>
                       </div>
                       <div class="profile-content" v-if="showDropdown.signIn">
@@ -138,7 +146,7 @@
                           <label for>Пароль</label>
                           <div class="input-pass">
                             <input type="password" placeholder="・・・" class="input-text" />
-                            <a href="#">Восстановить пароль</a>
+                            <a href="#" @click="restorePassword">Восстановить пароль</a>
                           </div>
 
                           <input type="submit" class="btn brown-btn" />
@@ -148,7 +156,6 @@
                         <form action>
                           <label for>Ваше имя</label>
                           <div class="input-num">
-                            <img src="@/assets/images/flag.png" alt />
                             <input type="text" placeholder="Как Вас зовут?" class="input-text" />
                           </div>
                           <label for>Номер телефона</label>
@@ -171,17 +178,41 @@
                         </form>
                       </div>
                     </div>
+                    <div class="restore-password profile" v-if="showDropdown.restorePassword">
+                      <form action>
+                        <label for>Номер телефона</label>
+                        <div class="input-num">
+                          <img src="@/assets/images/flag.png" alt />
+                          <input
+                            type="tel"
+                            v-mask="'+#(###) ###-##-##'"
+                            placeholder="+7 (___) ___ __ __"
+                            class="input-text"
+                          />
+                        </div>
+                        <div class="input-pass">
+                          <a
+                            href="#"
+                            @click="showDropdown.restorePassword && showDropdown.profile"
+                          >Я вспомнил пароль!</a>
+                        </div>
+
+                        <input type="submit" class="btn brown-btn" value="Восстановить пароль" />
+                      </form>
+                    </div>
                   </li>
                   <li class="basket-head dropdown">
-                    <router-link to="/OrderBasket">
-                      <img
-                        svg-inline
-                        svg-sprite
-                        alt="Vue logo"
-                        src="@/assets/icons/cart.svg"
-                        class="vue-logo"
-                      />
-                    </router-link>
+                    <img
+                      svg-inline
+                      svg-sprite
+                      alt="Vue logo"
+                      src="@/assets/icons/cart.svg"
+                      class="vue-logo"
+                      @click="showHeaderBasket=!showHeaderBasket"
+                    />
+                    <div class="dropdown-basket profile" v-if="showHeaderBasket">
+                    {{test}}
+                    </div>
                   </li>
                 </ul>
               </div>
@@ -275,13 +306,22 @@
 
 
 <script>
+import Basket from "@/components/Basket.vue";
+
 export default {
+  components:{
+    Basket
+  },
   data: () => ({
+    test:"test",
+    showHeaderBasket:false,
     showDropdown: {
       showUser: false,
       showBasket: false,
       profile: false,
-      signIn: true
+      signIn: true,
+      regist: false,
+      restorePassword: false
     },
     activeClass: {
       type: String,
@@ -303,28 +343,24 @@ export default {
     lang: ["Рус", "Каз", "En"]
   }),
   methods: {
+    restorePassword() {
+      this.showDropdown.restorePassword = true;
+      this.showDropdown.profile = false;
+    },
     mobileActive() {
       this.activeMenu = !this.activeMenu;
       this.burgerActive = !this.burgerActive;
     },
     tabRegist(val) {
-      console.log("tabRegist");
-      for (let i in this.showDropdown) {
-        if (i !== val) {
-          this.showDropdown[i] = false;
-        }
-        console.log(i !== val);
+      if(val==='signIn'){
+        this.showDropdown.signIn=true;
+        this.showDropdown.regist=false;
+      }else{
+        this.showDropdown.signIn=false;
+        this.showDropdown.regist=true;
       }
     }
   }
-  // mounted() {
-  //   let vm = this;
-  //   document.addEventListener("click", function(e) {
-  //     if (e.target != vm.$refs["dropdown-wrapper"]) {
-  //       vm.showDropdown = false
-  //     }
-  //   });
-  // }
 };
 </script>
 
