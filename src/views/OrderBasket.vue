@@ -402,7 +402,7 @@ export default {
     addPrice(price) {
       this.totalSum += price;
       this.totalCount += 1;
-      console.log(price);
+      // console.log(price);
     },
     minusPrice(price, count = 1) {
       this.totalSum -= price;

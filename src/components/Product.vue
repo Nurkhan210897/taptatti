@@ -41,7 +41,7 @@
           </div>
         </span>
       </div>
-      <div @click="showModal" class="show-modal">
+      <div @click="showModal(product)" class="show-modal">
         <div class="products-img">
           <img :src="product.img" alt />
         </div>
@@ -60,11 +60,11 @@
             <i class="fas fa-plus"></i>
           </span>
         </div>
-        <button class="btn-outline"  @click="addBasket">{{ totalPrice.toLocaleString() }}₸</button>
+        <button class="btn-outline" @click="addBasket">{{ totalPrice.toLocaleString() }}₸</button>
       </div>
     </div>
     <transition name="fade">
-      <Vpopup v-if="popup" @exitPopup="exitPopup">
+      <Vpopup v-if="modal_product" @exitPopup="exitPopup">
         <transition name="fade">
           <div class="cake-reg" v-if="cakeModal">
             <div class="cake-reg-header">
@@ -86,7 +86,7 @@
                   </div>
                 </div>
                 <div class="order-reg-price">
-                  <b>2000 ₸</b>
+                  <b>{{modal_product.price}} ₸</b>
                 </div>
               </div>
             </div>
@@ -516,11 +516,6 @@
                   <label for="star4"></label>
                   <input type="radio" name="star" id="star5" class="star-item" />
                   <label for="star5"></label>
-                  <!-- <div class="star-item" data-item-value="5">★</div>
-                  <div class="star-item" data-item-value="4">★</div>
-                  <div class="star-item" data-item-value="3">★</div>
-                  <div class="star-item" data-item-value="2">★</div>
-                  <div class="star-item" data-item-value="1">★</div>-->
                 </div>
               </div>
               <div class="reviews">
@@ -573,11 +568,11 @@
                     </div>
                     <div class="write-review">
                       <h3>Написать отзыв</h3>
-                      <form action>
+                      <form type="post" @submit.prevent="addReview">
+                        {{name}} + {{review}}
                         <input
                           type="text"
-                          name
-                          id
+                          name="name"
                           placeholder="Ваше имя"
                           v-model.trim="name"
                           :class="{invalid: ($v.name.$dirty && !$v.name.required)}"
@@ -587,17 +582,11 @@
                           class="error-text invalid"
                         >* Вы не написали имя</span>
                         <div class="choose-star">
-                          <div class="star" data-total-value="3">
-                            <div class="star-item" data-item-value="5">★</div>
-                            <div class="star-item" data-item-value="4">★</div>
-                            <div class="star-item" data-item-value="3">★</div>
-                            <div class="star-item" data-item-value="2">★</div>
-                            <div class="star-item" data-item-value="1">★</div>
-                          </div>
+                          <vue-stars name="slotDemo" :max="5" :value="3"></vue-stars>
                           <p class="silver-text">Выберите кол-во звёзд</p>
                         </div>
                         <textarea
-                          name
+                          name="comment"
                           id
                           cols="30"
                           rows="3"
@@ -609,11 +598,7 @@
                           v-if="$v.name.$dirty && !$v.review.required"
                           class="error-text invalid"
                         >* Вы не написали имя</span>
-                        <button
-                          type="submit"
-                          class="btn brown-btn"
-                          @click.prevent="addReview"
-                        >Отправить</button>
+                        <button type="submit" class="btn brown-btn">Отправить</button>
                       </form>
                     </div>
                   </div>
@@ -663,8 +648,8 @@ export default {
   },
   data: () => ({
     cardActive: false,
-    name: "",
-    review: "",
+    name: null,
+    review: null,
     testName: "",
     valid: false,
     reviewSuccess: false,
@@ -709,6 +694,9 @@ export default {
   computed: {
     totalPrice() {
       return this.product.count * this.product.price;
+    },
+    modal_product() {
+      return this.$store.getters.getModalProduct();
     }
   },
   methods: {
@@ -736,27 +724,27 @@ export default {
         this.product.count--;
       }
     },
-    showModal() {
+    showModal(product) {
       this.popup = !this.popup;
       this.$emit("activeModal");
+      this.$store.dispatch('SET_MODAL_PRODUCT', product)
     },
     addReview() {
-      if (this.$v.$invalid) {
-        this.$v.$touch();
-        return;
-      }
-      if (this.name != "") {
+      console.log(this.reviewsContent);
+
+      if (this.name && this.review) {
         this.reviewsContent.push({
           name: this.name,
           review: this.review
         });
-      }
-      if (this.name != "") {
+        this.name = this.review = null;
         this.reviewSuccess = true;
         this.reviewModal = false;
       }
-      this.name = "";
-      this.review = "";
+      // if (this.name != "") {
+      //   this.reviewSuccess = true;
+      //   this.reviewModal = false;
+      // }
     },
     checkTest() {
       if (this.testName.length < 15) {

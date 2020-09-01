@@ -110,7 +110,7 @@ textarea {
     position: absolute;
     padding: 25px 30px;
     border: none;
-    top: 50px;
+    top: 60px;
     display: block;
     z-index: 99;
     .tabs-btn {
@@ -126,10 +126,12 @@ textarea {
         content: '';
         position: absolute;
         display: block;
-        width: 20px;
-        height: 20px;
-        background-color: red;
+        width: 10px;
+        height: 10px;
+        background-color: #fff;
         transform: rotate(45deg);
+        top: -5px;
+        left: 130px;
     }
 }
 
@@ -207,6 +209,10 @@ label {
     }
 }
 
+input[type=text] {
+    height: 45px;
+}
+
 .input-num {
     margin-bottom: 20px;
     width: fit-content;
@@ -220,6 +226,7 @@ label {
     border: none;
     border-radius: 8px;
     font-size: 13px;
+    height: 45px;
     img {
         margin-right: 8px;
     }
@@ -229,6 +236,9 @@ label {
         &::placeholder {
             color: $brown-text;
         }
+    }
+    &:focus {
+        border: 1px solid $brown;
     }
 }
 
@@ -1110,5 +1120,11 @@ label {
     .prev-link {
         top: 30px;
         left: 30px;
+    }
+}
+
+.vue-stars {
+    label {
+        margin: 0;
     }
 }

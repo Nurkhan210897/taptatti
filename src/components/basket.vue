@@ -9,34 +9,7 @@
         <img src="@/assets/icons/basket.svg" alt />
       </span>
     </div>
-    <div class="basket" v-for="(item, index) in basketContent" :key="index">
-      <span class="delete-basket" @click="deleteBasketItem(index)">
-        <img src="@/assets/icons/exit-basket.svg" alt />
-      </span>
-      <div class="basket-top">
-        <div class="basket-img">
-          <img :src="item.img" alt />
-        </div>
-        <div class="basket-deskr">
-          <b>{{item.title}}</b>
-          <p class="silver-text">{{ item.description }}</p>
-        </div>
-      </div>
-      <div class="product-count">
-        <div class="count">
-          <span @click="minusBasket(item)">
-            <i class="fas fa-minus"></i>
-          </span>
-          <p>{{item.count}}</p>
-          <span @click="plusBasket(item)">
-            <i class="fas fa-plus"></i>
-          </span>
-        </div>
-        <div class="total-count">
-          <h3>{{item.totalPrice}}</h3>
-        </div>
-      </div>
-    </div>
+    <cart-product v-for="(item, index) in cart" :key="index" :data="item" :index="index"></cart-product>
     <div class="basket-last">
       <router-link to="/OrderBasket">
         <img src="@/assets/icons/delivery.svg" alt />Статус доставки
@@ -58,7 +31,9 @@
 </template>
 
 <script>
+import CartProduct  from './CartProduct'
 export default {
+  components: { CartProduct },
   props: {
     item: Object
   },
@@ -69,21 +44,12 @@ export default {
       totalCount: 0
     };
   },
+  computed: {
+    cart () {
+      return this.$store.getters.getCart()
+    }
+  },
   methods: {
-    plusBasket(product) {
-      this.basketContent[product.id].count += 1;
-      this.basketContent[product.id].totalPrice += product.price;
-      this.totalSum = Number(this.totalSum) + Number(product.price);
-      this.totalCount += 1;
-    },
-    minusBasket(product) {
-      if (this.totalCount != 1) {
-        this.basketContent[product.id].count -= 1;
-        this.basketContent[product.id].totalPrice -= product.price;
-        this.totalSum = Number(this.totalSum) - Number(product.price);
-        this.totalCount -= 1;
-      }
-    },
     deleteBasketItem(index) {
       this.totalSum =
         Number(this.totalSum) - Number(this.basketContent[index].totalPrice);
@@ -91,15 +57,13 @@ export default {
         Number(this.totalCount) - Number(this.basketContent[index].count);
       this.$delete(this.basketContent, index);
     },
-    clearBasket() {
-      this.basketContent = {};
-      this.totalSum = 0;
-      this.totalCount = 0;
+    clearBasket(){
+      this.$store.dispatch('REMOVE_ALL_CART')
+      console.log('REMOVE_ALL_CART')
     }
   },
   watch: {
     item() {
-      console.log(this.item);
       var product = this.item;
       product.totalPrice = Number(this.item.count) * Number(this.item.price);
       this.$set(this.basketContent, this.item.id, product);

@@ -193,7 +193,7 @@
                         <div class="input-pass">
                           <a
                             href="#"
-                            @click="showDropdown.restorePassword && showDropdown.profile"
+                            @click="rememberedPassword"
                           >Я вспомнил пароль!</a>
                         </div>
 
@@ -211,7 +211,10 @@
                       @click="showHeaderBasket=!showHeaderBasket"
                     />
                     <div class="dropdown-basket profile" v-if="showHeaderBasket">
-                    {{test}}
+                      <div class="list-vertical" v-if="cart.length">
+                        <cart-product v-for="(item, index) in cart" :key="index" :data="item" :index="index"></cart-product>
+                      </div>
+                      <span v-else>No items in the cart</span>  
                     </div>
                   </li>
                 </ul>
@@ -307,10 +310,17 @@
 
 <script>
 import Basket from "@/components/Basket.vue";
+import CartProduct from '@/components/CartProduct'
 
 export default {
   components:{
-    Basket
+    Basket,
+    CartProduct
+  },
+  computed: {
+    cart () {
+      return this.$store.getters.getCart()  
+    }
   },
   data: () => ({
     test:"test",
@@ -346,6 +356,10 @@ export default {
     restorePassword() {
       this.showDropdown.restorePassword = true;
       this.showDropdown.profile = false;
+    },
+    rememberedPassword(){
+      this.showDropdown.restorePassword = false;
+      this.showDropdown.profile = true;
     },
     mobileActive() {
       this.activeMenu = !this.activeMenu;

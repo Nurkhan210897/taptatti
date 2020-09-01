@@ -1,8 +1,9 @@
 <template>
-  <div id="app" >
+  <div id="app">
     <Header />
-       <router-view />
+    <router-view />
     <Footer />
+    <Vpopup v-if="modalName == 'productModal'"/>
   </div>
 </template>
 
@@ -11,22 +12,22 @@
 import Header from "@/layouts/Header";
 import Footer from "@/layouts/Footer";
 import Ordering from "@/views/OrderBasket.vue";
+import Vpopup from "@/components/V-popup"
 export default {
-  el: '#app',
   components: {
     Header,
     Footer,
-    Ordering
+    Ordering,
+    Vpopup
   },
-      handleScroll: function(evt, el) {
-      if (window.scrollY > 50) {
-        el.setAttribute(
-          "style",
-          "opacity: 1; transform: translate3d(0, -10px, 0)"
-        );
-      }
-      return window.scrollY > 100;
+  computed: {
+    modalName () {
+      return this.$store.getters.getModalName()
     }
+  },
+  data:()=>({
+    vPopup: false
+  })
 };
 </script>
 
@@ -35,5 +36,4 @@ export default {
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~vue-multiselect/dist/vue-multiselect.min.css";
 @import "assets/style/main.scss";
-
 </style>

@@ -9,6 +9,9 @@ import VueScrollactive from 'vue-scrollactive';
 import Vuelidate from 'vuelidate'
 import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
+import store from './store'
+import { VueStars } from "vue-stars"
+Vue.component("vue-stars", VueStars)
 
 Vue.use(Vuelidate)
 Vue.use(VueTheMask)
@@ -22,6 +25,7 @@ Vue.config.productionTip = false
 Vue.component('v-select', vSelect)
 new Vue({
     router,
+    store,
     render: h => h(App)
 }).$mount('#app')
 
@@ -52,23 +56,23 @@ window.addEventListener('scroll', () => {
 })
 
 
-var mutationObserver = new MutationObserver(function(mutations) {
-    mutations.forEach(function(mutation) {});
-    let exitModal = document.querySelector('.exit')
-    let addBasket = document.querySelector('.addBasket')
-    exitModal, addBasket.addEventListener('click', function() {
-        document.body.style.overflowY = "inherit"
-    });
-});
-mutationObserver.observe(document.documentElement, {
-    childList: true,
-    subtree: true,
-    characterDataOldValue: true
-});
+// var mutationObserver = new MutationObserver(function(mutations) {
+//     mutations.forEach(function(mutation) {});
+//     let exitModal = document.querySelector('.exit')
+//     let addBasket = document.querySelector('.addBasket')
+//     exitModal, addBasket.addEventListener('click', function() {
+//         document.body.style.overflowY = "inherit"
+//     });
+// });
+// mutationObserver.observe(document.documentElement, {
+//     childList: true,
+//     subtree: true,
+//     characterDataOldValue: true
+// });
 
-let showModal = document.querySelectorAll('.show-modal');
-for (let i in showModal) {
-    showModal[i].addEventListener('click', function() {
-        document.body.style.overflowY = "hidden"
-    })
-}
+// let showModal = document.querySelectorAll('.show-modal');
+// for (let i in showModal) {
+//     showModal[i].addEventListener('click', function() {
+//         document.body.style.overflowY = "hidden"
+//     })
+// }

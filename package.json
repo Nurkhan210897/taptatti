@@ -21,6 +21,7 @@
         "vue-scrollactive": "^0.9.3",
         "vue-select": "^3.10.8",
         "vue-slick-carousel": "^1.0.6",
+        "vue-stars": "^1.2.2",
         "vue-svg-inline-loader": "^1.5.0",
         "vue-the-mask": "^0.11.1",
         "vuelidate": "^0.7.5",

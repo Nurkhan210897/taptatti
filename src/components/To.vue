@@ -235,7 +235,7 @@ export default {
   },
   watch: {
     "payment.cash"(newval) {
-      console.log(newval);
+      // console.log(newval);
     }
   }
 };
